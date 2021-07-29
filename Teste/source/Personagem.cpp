@@ -1,4 +1,4 @@
-#include "../headers/Personagem.h"
+#include "../lib/Personagem.h"
 
 Personagem::Personagem(float xIn, float yIn, const char* caminhoTextura) : x{xIn}, y{yIn}, text{nullptr}{
     x = xIn;
@@ -6,7 +6,7 @@ Personagem::Personagem(float xIn, float yIn, const char* caminhoTextura) : x{xIn
     text = nullptr;
 
     if(caminhoTextura){
-        
+
         text = new sf::Texture();
         text->loadFromFile(caminhoTextura);
     }
@@ -22,8 +22,8 @@ Personagem::~Personagem(){
 }
 
 void Personagem::atualizar(){
-    x+= 0.008;
-    y+= 0.006;
+    x = sf::Mouse::getPosition().x;
+    y = sf::Mouse::getPosition().y;
 
     corpo.setPosition(sf::Vector2f(x, y));
 }

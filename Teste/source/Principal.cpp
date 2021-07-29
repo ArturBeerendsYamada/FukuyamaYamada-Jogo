@@ -1,8 +1,12 @@
-#include "../headers/Principal.h"
+#include "../lib/Principal.h"
+
+#define WIDTH 800
+#define HEIGHT 600
 
 Principal::Principal():
-    janela{new sf::RenderWindow(sf::VideoMode(800, 600), "exercicio 1")},
-    amigo{0, 0, "Brasil_Countryball.png"}{
+    janela{new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "exercicio 1")},
+    amigo(WIDTH/2, HEIGHT/2, "Brasil_Countryball.png"){
+        janela->setPosition({0, 0});
 }
 
 Principal::~Principal(){
@@ -10,7 +14,13 @@ Principal::~Principal(){
 }
 
 int Principal::executar(){
-    while (true){
+    sf::Event event;
+    while (janela->isOpen()){
+        while (janela->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				janela->close();
+		}
         janela->clear();
         amigo.atualizar();
         amigo.desenhar(janela);
