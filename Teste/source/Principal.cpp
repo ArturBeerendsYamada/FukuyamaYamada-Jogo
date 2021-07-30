@@ -1,4 +1,5 @@
-#include "../lib/Principal.h"
+#include "../headers/Principal.h"
+//#include "../lib/Principal.h"
 
 #define WIDTH 800
 #define HEIGHT 600

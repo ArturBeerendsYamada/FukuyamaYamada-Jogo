@@ -1,4 +1,5 @@
-#include "../lib/Personagem.h"
+#include "../headers/Personagem.h"
+//#include "../lib/Personagem.h"
 
 Personagem::Personagem(float xIn, float yIn, const char* caminhoTextura) : x{xIn}, y{yIn}, text{nullptr}{
     x = xIn;
