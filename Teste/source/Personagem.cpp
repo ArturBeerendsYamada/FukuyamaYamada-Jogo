@@ -1,11 +1,7 @@
 #include "../headers/Personagem.h"
 //#include "../lib/Personagem.h"
 
-Personagem::Personagem(float xIn, float yIn, const char* caminhoTextura) : x{xIn}, y{yIn}, text{nullptr}{
-    x = xIn;
-    y = yIn;
-    text = nullptr;
-
+Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel, const char* caminhoTextura) : posicao{pos}, v{vel}, text{nullptr}{
     if(caminhoTextura){
 
         text = new sf::Texture();
@@ -22,11 +18,9 @@ Personagem::~Personagem(){
         delete text;
 }
 
-void Personagem::atualizar(){
-    x = sf::Mouse::getPosition().x;
-    y = sf::Mouse::getPosition().y;
-
-    corpo.setPosition(sf::Vector2f(x, y));
+void Personagem::atualizar(float t){
+    posicao += v*t;
+    corpo.setPosition(posicao);
 }
 
 void Personagem::desenhar(sf::RenderWindow* janela){

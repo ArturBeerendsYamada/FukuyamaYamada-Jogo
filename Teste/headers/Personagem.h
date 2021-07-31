@@ -5,13 +5,14 @@
 
 class Personagem{
     private:
-        float x, y;
+        sf::Vector2f posicao;
+        sf::Vector2f v;
         sf::Texture* text;
         sf::RectangleShape corpo;
         
     public:
-        Personagem(float xIn = 0.0f, float yIn = 0.0f, const char* caminhoTextura = nullptr );
+        Personagem(sf::Vector2f pos = sf::Vector2f(0.0f, 0.0f), sf::Vector2f v = sf::Vector2f(0.0f, 0.0f), const char* caminhoTextura = nullptr );
         ~Personagem();
-        void atualizar();
+        void atualizar(float t);
         void desenhar(sf::RenderWindow* janela);
 };

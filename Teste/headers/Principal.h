@@ -1,12 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Personagem.h"
+#include <time.h>
+#include "Lista.h"
 
 class Principal{
     private:
         sf::RenderWindow* janela;
-        Personagem amigo;
+        sf::Clock relogio;
+        Lista ListaBolas;
     
     public:
         Principal();
