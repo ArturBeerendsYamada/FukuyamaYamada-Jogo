@@ -1,6 +1,8 @@
 #pragma once
 #include "Personagem.h"
 
+class GerenciadorGrafico;
+
 class Lista{
     private:
         
@@ -36,8 +38,9 @@ class Lista{
         Personagem* voltarInicio();
 	    Personagem* irProximo();
 
+        void inicializarPersonagens(GerenciadorGrafico &g);
         void atualizarPersonagens(float t);
-        void desenharPersonagens(sf::RenderWindow* janela);
+        void desenharPersonagens(GerenciadorGrafico &g);
         void destruirPersonagens();
 
 

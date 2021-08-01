@@ -1,30 +1,23 @@
 #include "../headers/Personagem.h"
 //#include "../lib/Personagem.h"
 
-Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel, const char* caminhoTextura) : posicao{pos}, v{vel}, text{nullptr}{
-    if(caminhoTextura){
-
-        text = new sf::Texture();
-        text->loadFromFile(caminhoTextura);
-    }
-
-    corpo.setTexture(text);
-    corpo.setSize(sf::Vector2f(200.0f,200.0f));
-    corpo.setOrigin(corpo.getSize()/ 2.0f);
+Personagem::Personagem(Vetor2F pos, Vetor2F vel, const char* caminhoTextura) : posicao{pos}, v{vel}, caminho{caminhoTextura}{
 }
 
 Personagem::~Personagem(){
-    if (text)
-        delete text;
+
+}
+
+void Personagem::inicializar(GerenciadorGrafico &g){
+    g.carregarTextura(caminho);
 }
 
 void Personagem::atualizar(float t){
     posicao += v*t;
-    corpo.setPosition(posicao);
 }
 
-void Personagem::desenhar(sf::RenderWindow* janela){
-    janela->draw(corpo);
+void Personagem::desenhar(GerenciadorGrafico &g){
+    g.desenhar(caminho, posicao);
 
     //sf::RectangleShape help;
     //sf::Texture tex;
