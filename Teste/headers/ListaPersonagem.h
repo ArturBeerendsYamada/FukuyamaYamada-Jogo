@@ -5,15 +5,15 @@ class GerenciadorGrafico;
 
 class Lista{
     private:
-        
+
         class ElementoLista{
             private:
                 Personagem* info;
                 ElementoLista* pElLProx;
                 ElementoLista* pElLAnt;
-            
+
             public:
-                ElementoLista(Personagem* info=nullptr, ElementoLista* Ant=nullptr,ElementoLista* Prox=nullptr);
+                ElementoLista(Personagem* info=nullptr, ElementoLista* Prox=nullptr, ElementoLista* Ant=nullptr);
                 ~ElementoLista();
 
                 ElementoLista* getAnt() const;

@@ -1,5 +1,5 @@
-#include "../headers/Personagem.h"
-//#include "../lib/Personagem.h"
+//#include "../headers/Personagem.h"
+#include "../lib/Personagem.h"
 
 Personagem::Personagem(Vetor2F pos, Vetor2F vel, const char* caminhoTextura) : posicao{pos}, v{vel}, caminho{caminhoTextura}{
 }

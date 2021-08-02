@@ -1,7 +1,8 @@
-#include "../headers/ListaPersonagem.h"
+//#include "../headers/ListaPersonagem.h"
+#include "../lib/ListaPersonagem.h"
 
-Lista::ElementoLista::ElementoLista(Personagem* Info, ElementoLista* Ant,ElementoLista* Prox):
-info{Info}, pElLAnt{Ant}, pElLProx{Prox} 
+Lista::ElementoLista::ElementoLista(Personagem* Info, ElementoLista* Prox, ElementoLista* Ant):
+info{Info}, pElLProx{Prox}, pElLAnt{Ant}
 {
 
 }
@@ -43,7 +44,7 @@ void Lista::inserir(Personagem* info){
 
         if(!pElLIn){
             pElLIn = novo;
-            pElLFin = novo;            
+            pElLFin = novo;
         } else{
 
             pElLFin->setProx(novo);
@@ -75,7 +76,7 @@ void Lista::esvaziar(){
 Personagem* Lista::voltarInicio(){
     pElLAt = pElLIn;
 
-    if(pElLAt) 
+    if(pElLAt)
         return pElLAt->getInfo();
     else return nullptr;
 }
@@ -105,7 +106,7 @@ void Lista::atualizarPersonagens(float t){
 
         p=irProximo();
     }
-    
+
 }
 void Lista::desenharPersonagens(GerenciadorGrafico &g){
     Personagem* p = voltarInicio();

@@ -1,5 +1,5 @@
-#include "../headers/Principal.h"
-//#include "../lib/Principal.h"
+//#include "../headers/Principal.h"
+#include "../lib/Principal.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -26,7 +26,7 @@ Principal::~Principal(){
 
 int Principal::executar(){
     sf::Event event;
-    
+
     relogio.restart();
 
     while (gerenciadorGrafico.getJanela()->isOpen()){
@@ -35,7 +35,7 @@ int Principal::executar(){
 			if (event.type == sf::Event::Closed)
 				gerenciadorGrafico.getJanela()->close();
 		}
-        
+
         sf::Time t= relogio.getElapsedTime();
 
         gerenciadorGrafico.limpar();

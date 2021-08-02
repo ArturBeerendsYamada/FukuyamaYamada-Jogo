@@ -1,4 +1,5 @@
-#include "../headers/GerenciadorGrafico.h"
+//#include "../headers/GerenciadorGrafico.h"
+#include "../lib/GerenciadorGrafico.h"
 #include <iostream>
 
 GerenciadorGrafico::GerenciadorGrafico():
@@ -52,7 +53,7 @@ bool GerenciadorGrafico::carregarTextura(const std::string& caminho){
 
         texturas.emplace(caminho, text);
         return true;
-    } 
+    }
 }
 
 void GerenciadorGrafico::centralizar(const Vetor2F centro){
