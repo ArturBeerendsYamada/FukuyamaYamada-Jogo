@@ -1,9 +1,9 @@
-  /*#include "Lista.h"
+  #include "Lista.h"
   
   template <typename TF>
   template <typename TE>
   Lista<TF>::ElementoLista<TE>::ElementoLista(TE Info, ElementoLista<TE>* Ant, ElementoLista<TE>* Prox) :
-  info{Info}, pElLAnt{Ant}, pElLAProx{Prox} {
+  info{Info}, pElLAnt{Ant}, pElLProx{Prox} {
 
   }
 
@@ -28,25 +28,25 @@
   template <typename TF>
   template <typename TE>
   Lista<TF>::ElementoLista<TE>* Lista<TF>::ElementoLista<TE>::getAnt() const{
-    return ant;
+    return pElLAnt;
   }
 
   template <typename TF>
   template <typename TE>
   void Lista<TF>::ElementoLista<TE>::setAnt(ElementoLista<TE>* Ant) {
-    ant = Ant;
+    pElLAnt = Ant;
   }
 
   template <typename TF>
   template <typename TE>
   Lista<TF>::ElementoLista<TE>* Lista<TF>::ElementoLista<TE>::getProx() const{
-    return prox;
+    return pElLProx;
   }
 
   template <typename TF>
   template <typename TE>
   void Lista<TF>::ElementoLista<TE>::setProx(ElementoLista<TE>* Prox) {
-    prox = Prox;
+    pElLProx = Prox;
   }
 
   template <typename TF>
@@ -64,7 +64,8 @@
   void Lista<TF>::inserir(TF info) {
     if (info) {
       
-      ElementoLista<TF>* novo = new ElementoLista<TF>(info);
+      ElementoLista<TF>* novo = new ElementoLista<TF>;
+      novo->setInfo(info);
 
       if (!pElLIn) {
       
@@ -86,9 +87,9 @@
   template <typename TF>
   void Lista<TF>::esvaziar() {
 
-    ElementoLista<TF>* paux = pElLIn;
-    pElLAt = pElLIn;
-    
+    ElementoLista<TF>* paux = nullptr;
+    paux = pElLAt = pElLIn;
+        
     while (pElLAt != nullptr) {
       paux = pElLAt->getProx();
 
@@ -120,4 +121,4 @@
     pElLAt = pElLAt->getProx();
 
     return (pElLAt) ? pElLAt->getInfo() : nullptr;
-  }*/
+  }

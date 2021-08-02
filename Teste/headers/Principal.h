@@ -9,7 +9,7 @@ class Principal{
     private:
         GerenciadorGrafico gerenciadorGrafico;
         sf::Clock relogio;
-        Lista ListaBolas;
+        ListaPersonagem ListaBolas;
     
     public:
         Principal();

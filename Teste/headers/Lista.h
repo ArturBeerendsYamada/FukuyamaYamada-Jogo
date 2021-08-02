@@ -1,51 +1,43 @@
-<<<<<<< HEAD
-/*#pragma once
-=======
 #pragma once
-#include "Personagem.h"
->>>>>>> c45bac8d0c5c7b779cca9816debfc85aa3d073e5
+template <typename TF>
+class Lista
+{
+private:
 
-class GerenciadorGrafico;
+	template <typename TE>
+	class ElementoLista
+	{
+	private:
+		TE info;
+        ElementoLista* pElLProx;
+        ElementoLista* pElLAnt;
+		
 
-class Lista{
-    private:
-        
-        class ElementoLista{
-            private:
-                Personagem* info;
-                ElementoLista* pElLProx;
-                ElementoLista* pElLAnt;
-            
-            public:
-                ElementoLista(Personagem* info=nullptr, ElementoLista* Ant=nullptr,ElementoLista* Prox=nullptr);
-                ~ElementoLista();
+	public:
+		ElementoLista(TE info=nullptr,ElementoLista* Ant=nullptr, ElementoLista* Prox=nullptr);
+		~ElementoLista();
 
-                ElementoLista* getAnt() const;
-                void setAnt(ElementoLista* pAnt);
-                ElementoLista* getProx() const;
-                void setProx(ElementoLista* pProx);
-                Personagem* getInfo() const;
-                void setInfo(Personagem* in);
-        };
+		ElementoLista* getAnt() const;
+        void setAnt(ElementoLista* pAnt);
+        ElementoLista* getProx() const;
+        void setProx(ElementoLista* pProx);
+        TE getInfo() const;
+        void setInfo(TE in);
+	};
 
-        ElementoLista* pElLIn;
-        ElementoLista* pElLFin;
-        ElementoLista* pElLAt;
+	ElementoLista<TF>* pElLIn;
+	ElementoLista<TF>* pElLFin;
+	ElementoLista<TF>* pElLAt;
 
-    public:
-        Lista();
-        ~Lista();
+public:
+	Lista();
+	~Lista();
 
-        void inserir(Personagem* info);
-        void esvaziar();
+	void inserir(TF info);
+	void esvaziar();
 
-        Personagem* voltarInicio();
-	    Personagem* irProximo();
+	TF voltarInicio();
+	TF irProximo();
+};
 
-        void inicializarPersonagens(GerenciadorGrafico &g);
-        void atualizarPersonagens(float t);
-        void desenharPersonagens(GerenciadorGrafico &g);
-        void destruirPersonagens();
-
-
-};*/
+#include "ListaImplementacao.h"
