@@ -3,6 +3,6 @@
 
 int main(){
     Principal principal;
-
-    return principal.executar();
+    principal.executar();
+    return 0;
 }
