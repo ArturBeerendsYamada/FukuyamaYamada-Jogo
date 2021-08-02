@@ -1,4 +1,4 @@
-  #include "Lista.h"
+  /*#include "Lista.h"
   
   template <typename TF>
   template <typename TE>
@@ -107,8 +107,10 @@
   TF Lista<TF>::voltarInicio() {
     pElLAt = pElLIn;
 
-    if (pElLAt) return pElLAt->getInfo();
-    else return nullptr;
+    if (pElLAt) 
+      return pElLAt->getInfo();
+    else 
+      return nullptr;
 
   }
 
@@ -118,6 +120,4 @@
     pElLAt = pElLAt->getProx();
 
     return (pElLAt) ? pElLAt->getInfo() : nullptr;
-
-
   }

@@ -1,4 +1,4 @@
-#include "../headers/Lista.h"
+#include "../headers/ListaPersonagem.h"
 
 Lista::ElementoLista::ElementoLista(Personagem* Info, ElementoLista* Ant,ElementoLista* Prox):
 info{Info}, pElLAnt{Ant}, pElLProx{Prox} 

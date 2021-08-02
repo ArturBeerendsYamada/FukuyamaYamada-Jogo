@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <time.h>
-#include "Lista.h"
+#include "ListaPersonagem.h"
 #include "GerenciadorGrafico.h"
 
 class Principal{
