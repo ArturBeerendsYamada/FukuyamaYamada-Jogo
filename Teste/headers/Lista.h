@@ -1,43 +1,47 @@
 #pragma once
+#include "Personagem.h"
 
-template <typename TF>
-class Lista {
-private:
-    
-    template <typename TE>
-    class ElementoLista {
+class GerenciadorGrafico;
+
+class Lista{
     private:
         
-        TE info;
-        ElementoLista* pElLProx;
-        ElementoLista* pElLAnt;
-    
+        class ElementoLista{
+            private:
+                Personagem* info;
+                ElementoLista* pElLProx;
+                ElementoLista* pElLAnt;
+            
+            public:
+                ElementoLista(Personagem* info=nullptr, ElementoLista* Ant=nullptr,ElementoLista* Prox=nullptr);
+                ~ElementoLista();
+
+                ElementoLista* getAnt() const;
+                void setAnt(ElementoLista* pAnt);
+                ElementoLista* getProx() const;
+                void setProx(ElementoLista* pProx);
+                Personagem* getInfo() const;
+                void setInfo(Personagem* in);
+        };
+
+        ElementoLista* pElLIn;
+        ElementoLista* pElLFin;
+        ElementoLista* pElLAt;
+
     public:
-        ElementoLista(TE info = nullptr, ElementoLista* Ant = nullptr, ElementoLista* Prox = nullptr);
-        ~ElementoLista();
+        Lista();
+        ~Lista();
 
-        ElementoLista* getAnt() const;
-        void setAnt(ElementoLista* Ant);
-        ElementoLista* getProx() const;
-        void setProx(ElementoLista* Prox);
-        TE getInfo() const;
-        void setInfo(TE Info);
-    };
+        void inserir(Personagem* info);
+        void esvaziar();
 
-    ElementoLista<TF>* pElLIn;
-    ElementoLista<TF>* pElLFin;
-    ElementoLista<TF>* pElLAt;
+        Personagem* voltarInicio();
+	    Personagem* irProximo();
 
-public:
+        void inicializarPersonagens(GerenciadorGrafico &g);
+        void atualizarPersonagens(float t);
+        void desenharPersonagens(GerenciadorGrafico &g);
+        void destruirPersonagens();
 
-    Lista();
-    ~Lista();
 
-    void inserir(TF info);
-    void esvaziar();
-
-    TF voltarInicio();
-    TF irProximo(); 
 };
-
-#include "ListaImplementacao.h"
