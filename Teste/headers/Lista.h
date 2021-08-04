@@ -4,11 +4,13 @@ template <typename TF>
 class Lista
 {
 private:
+
 	template <typename TE>
 	class ElementoLista
 	{
 	private:
 		TE info;
+
 		ElementoLista* pElLProx;
 		ElementoLista* pElLAnt;
 
@@ -22,6 +24,7 @@ private:
 		void setProx(ElementoLista* Prox);
 		TE getInfo() const;
 		void setInfo(TE Info);
+
 	};
 
 	ElementoLista<TF>* pElLIn;
@@ -39,4 +42,6 @@ public:
 	TF irProximo();
 };
 
+
 #include "ListaImplementacao.h"
+
