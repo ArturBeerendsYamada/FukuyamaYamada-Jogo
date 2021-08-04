@@ -1,4 +1,5 @@
-#include "../headers/ListaPersonagem.h"
+//#include "../headers/ListaPersonagem.h"
+#include "../lib/ListaPersonagem.h"
 
 ListaPersonagem::ListaPersonagem()
 {
@@ -35,9 +36,9 @@ void ListaPersonagem::atualizarPersonagens(float t)
 	while (p)
 	{
 		p->atualizar(t);
-
 		p = lista.irProximo();
 	}
+
 }
 
 void ListaPersonagem::desenharPersonagens(GerenciadorGrafico &g)

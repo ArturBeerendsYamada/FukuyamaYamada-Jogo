@@ -4,15 +4,17 @@
 #include <time.h>
 #include "ListaPersonagem.h"
 #include "GerenciadorGrafico.h"
+#include "Fase_teste.h"
+#include "Menu.h"
 
 class Principal{
     private:
-        GerenciadorGrafico gerenciadorGrafico;
-        sf::Clock relogio;
-        ListaPersonagem ListaBolas;
-    
+        Menu menu_inicial;
+        Fase_teste fase;
+
     public:
         Principal();
         ~Principal();
-        int executar();
+        void executar();
+        void inicia_fase();
 };

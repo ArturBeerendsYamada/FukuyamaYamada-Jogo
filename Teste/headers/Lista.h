@@ -1,4 +1,5 @@
 #pragma once
+
 template <typename TF>
 class Lista
 {
@@ -9,20 +10,21 @@ private:
 	{
 	private:
 		TE info;
-        ElementoLista* pElLProx;
-        ElementoLista* pElLAnt;
-		
+
+		ElementoLista* pElLProx;
+		ElementoLista* pElLAnt;
 
 	public:
-		ElementoLista(TE info=nullptr,ElementoLista* Ant=nullptr, ElementoLista* Prox=nullptr);
+		ElementoLista(TE info = nullptr, ElementoLista* Ant = nullptr, ElementoLista* Prox = nullptr);
 		~ElementoLista();
 
 		ElementoLista* getAnt() const;
-        void setAnt(ElementoLista* pAnt);
-        ElementoLista* getProx() const;
-        void setProx(ElementoLista* pProx);
-        TE getInfo() const;
-        void setInfo(TE in);
+		void setAnt(ElementoLista* Ant);
+		ElementoLista* getProx() const;
+		void setProx(ElementoLista* Prox);
+		TE getInfo() const;
+		void setInfo(TE Info);
+
 	};
 
 	ElementoLista<TF>* pElLIn;
@@ -40,4 +42,6 @@ public:
 	TF irProximo();
 };
 
+
 #include "ListaImplementacao.h"
+
