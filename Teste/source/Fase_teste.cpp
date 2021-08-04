@@ -16,11 +16,11 @@ void Fase_teste::inicializar()
 {
 	gerenciadorGrafico = new GerenciadorGrafico;
 
-	ListaBolas.inserir(new Personagem(Vetor2F(0.0f, 0.0f), Vetor2F(5, 5), "Brasil_Countryball.png"));
-	ListaBolas.inserir(new Personagem(Vetor2F(400.0f, 300.0f), Vetor2F(10, 0), "Italia_Countryball.png"));
-	ListaBolas.inserir(new Personagem(Vetor2F(200.0f, 200.0f), Vetor2F(0, 5), "Japan_Countryball.png"));
-	ListaBolas.inserir(new Personagem(Vetor2F(800.0f, 600.0f), Vetor2F(0, 0), "Alemanha_Countryball.png"));
-	ListaBolas.inserir(new Personagem(Vetor2F(400.0f, 0.0f), Vetor2F(5, 5), "Russia_Countryball.png"));
+	ListaBolas.inserir(new Personagem(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(5, 5)));
+	ListaBolas.inserir(new Personagem(Vetor2F(400.0f, 300.0f), "Italia_Countryball.png", Vetor2F(10, 0)));
+	ListaBolas.inserir(new Personagem(Vetor2F(200.0f, 200.0f), "Japan_Countryball.png", Vetor2F(0, 5)));
+	ListaBolas.inserir(new Personagem(Vetor2F(800.0f, 600.0f), "Alemanha_Countryball.png", Vetor2F(0, 0)));
+	ListaBolas.inserir(new Personagem(Vetor2F(400.0f, 0.0f), "Russia_Countryball.png", Vetor2F(5, 5)));
 
 	ListaBolas.inicializarPersonagens(*gerenciadorGrafico);
 

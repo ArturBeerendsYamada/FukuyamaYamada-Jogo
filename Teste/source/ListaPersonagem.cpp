@@ -22,7 +22,7 @@ void ListaPersonagem::inicializarPersonagens(GerenciadorGrafico &g)
 
 	while (p)
 	{
-		p->inicializar(g);
+		p->inicializarTextura(g);
 
 		p = lista.irProximo();
 	}
