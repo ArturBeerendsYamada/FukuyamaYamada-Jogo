@@ -37,12 +37,13 @@ GerenciadorComandos::Comandos  GerenciadorComandos::comandosFuncionalidades()
 	{
 		return continuar;
 	}
+	return nulo;
 }
 
 
 GerenciadorComandos::Comandos GerenciadorComandos::comandosBolas()
 {
-	
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
 		return esquerda1;
@@ -66,7 +67,7 @@ GerenciadorComandos::Comandos GerenciadorComandos::comandosBolas()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		return direita2;
-	}	
+	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 	{
 		return pular2;
@@ -75,7 +76,7 @@ GerenciadorComandos::Comandos GerenciadorComandos::comandosBolas()
 	{
 		return atirar2;
 	}
-
+	return nulo;
 }
 
 GerenciadorComandos* GerenciadorComandos::g = nullptr;
