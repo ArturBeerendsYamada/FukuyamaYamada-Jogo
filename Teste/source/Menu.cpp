@@ -1,4 +1,3 @@
-
 #include "../lib/Menu.h"
 
 #include "../lib/Principal.h"
@@ -39,7 +38,7 @@ Menu::Menu():janela{new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "TheBal
 	info.setCharacterSize(SEL_TAM_FONT/4);
 	info.setFillColor(sf::Color::Black);
 	info.setString("Para navegar pelo menu, use as setas do teclado. Para selecionar uma opcao, aperte Enter");
-	info.setPosition(sf::Vector2(10.f, 6.f));
+	info.setPosition(sf::Vector2f(10.f, 6.f));
 }
 Menu::~Menu(){}
 

@@ -1,4 +1,3 @@
-//#include "../headers/ListaPersonagem.h"
 #include "../lib/ListaPersonagem.h"
 
 ListaPersonagem::ListaPersonagem()

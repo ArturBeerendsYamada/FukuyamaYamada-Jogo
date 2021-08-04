@@ -1,4 +1,3 @@
-//#include "../headers/GerenciadorGrafico.h"
 #include "../lib/GerenciadorGrafico.h"
 #include <iostream>
 

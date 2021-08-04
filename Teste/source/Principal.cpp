@@ -1,4 +1,3 @@
-//#include "../headers/Principal.h"
 #include "../lib/Principal.h"
 
 #define WIDTH 800

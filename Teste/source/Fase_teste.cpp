@@ -1,5 +1,4 @@
-
-#include "Fase_teste.h"
+#include "../lib/Fase_teste.h"
 
 #include <iostream>
 using namespace std;

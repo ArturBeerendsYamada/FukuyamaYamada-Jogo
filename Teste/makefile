@@ -5,7 +5,7 @@ PROJ_NAME=nome_do_jogo
 CPP=$(wildcard ./source/*.cpp)
 
 #Arquivos .h
-H=$(wildcard ./headers/*.h)
+H=$(wildcard ./lib/*.h)
 
 #Objetos compilados
 OBJ=$(subst .cpp,.opp,$(subst source,objects,$(CPP)))
@@ -37,7 +37,7 @@ $(PROJ_NAME): $(OBJ)
 	$(CC) $^ -o $@ $(SFML)
 	@ echo 'Finished building binary: $@'
 	@ echo ' '
-./objects/%.opp: ./source/%.cpp ./headers/%.h 
+./objects/%.opp: ./source/%.cpp ./lib/%.h 
 	@ echo 'Building target using G++ compiler: $@'
 	$(CC) $< $(CC_FLAGS) -o $@
 	@ echo ' ' 
