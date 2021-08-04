@@ -11,8 +11,8 @@ private:
 	private:
 		TE info;
 
-		ElementoLista* pElLProx;
 		ElementoLista* pElLAnt;
+		ElementoLista* pElLProx;
 
 	public:
 		ElementoLista(TE info = nullptr, ElementoLista* Ant = nullptr, ElementoLista* Prox = nullptr);
