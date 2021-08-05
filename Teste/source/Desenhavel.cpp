@@ -1,4 +1,4 @@
-#include "Desenhavel.h"
+#include "../lib/Desenhavel.h"
 
 Desenhavel::Desenhavel(Vetor2F pos, const char *textu):
 	posicao(pos), textura(textu){}

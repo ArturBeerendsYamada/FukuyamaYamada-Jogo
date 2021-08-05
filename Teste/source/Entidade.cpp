@@ -1,4 +1,4 @@
-#include "Entidade.h"
+#include "../lib/Entidade.h"
 
 Entidade::Entidade(Vetor2F pos, const char *textu, Vetor2F vel):
 	Desenhavel(pos, textu), velocidade(vel){}
