@@ -8,7 +8,7 @@ protected:
 	Vetor2F velocidade;
 
 public:
-	Entidade(Vetor2F pos={0.0f, 0.0f}, const char *textu="", Vetor2F vel={0.f, 0.f});
+	Entidade(Vetor2F pos={0.0f, 0.0f}, const char *textu=nullptr, Vetor2F vel={0.f, 0.f});
 	virtual ~Entidade();
 
 	void setVelocidade (const Vetor2F vel);

@@ -19,6 +19,6 @@ public:
 
 	};
 
-	Comandos comandosBolas();
+	unsigned int comandosBolas();
 	Comandos comandosFuncionalidades();
 };

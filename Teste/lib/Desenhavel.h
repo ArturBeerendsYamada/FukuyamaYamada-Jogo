@@ -10,7 +10,7 @@ protected:
 	const char *textura;
 
 public:
-	Desenhavel(Vetor2F pos={0.0f, 0.0f}, const char *textu="");
+	Desenhavel(Vetor2F pos={0.0f, 0.0f}, const char *textu=nullptr);
 	virtual ~Desenhavel();
 
 	void setPosicao (const Vetor2F pos);

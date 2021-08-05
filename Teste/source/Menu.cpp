@@ -77,6 +77,7 @@ int Menu::executar()
 								break;
 
 							default:
+								janela->close();
 								return 1;
 						};
 						break;
