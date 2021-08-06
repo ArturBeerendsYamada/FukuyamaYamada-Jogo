@@ -1,4 +1,5 @@
-#include "Desenhavel.h"
+#include "../lib/Desenhavel.h"
+#include <iostream>
 
 Desenhavel::Desenhavel(Vetor2F pos, const char *textu):
 	posicao(pos), textura(textu){}
@@ -9,3 +10,5 @@ const Vetor2F Desenhavel::getPosicao() const {return posicao;}
 
 void Desenhavel::desenhar(GerenciadorGrafico& g) {g.desenhar(textura, posicao);}
 void Desenhavel::inicializarTextura(GerenciadorGrafico& g) {g.carregarTextura(textura);}
+
+

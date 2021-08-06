@@ -3,7 +3,7 @@
 
 GerenciadorGrafico::GerenciadorGrafico():
     janela{new sf::RenderWindow(sf::VideoMode(800,600), "Game")},
-    camera{sf::Vector2f(400,300),sf::Vector2f(800,600)}
+    camera{sf::Vector2f(400,300),sf::Vector2f(3200,2400)}
 {
     janela->setView(camera);
 }
@@ -62,3 +62,8 @@ void GerenciadorGrafico::centralizar(const Vetor2F centro){
 sf::RenderWindow* GerenciadorGrafico::getJanela() const{
     return janela;
 }
+
+std::map<const std::string, sf::Texture*> GerenciadorGrafico::getTextura(){
+    return texturas;
+}
+

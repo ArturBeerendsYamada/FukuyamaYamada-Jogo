@@ -6,7 +6,7 @@
 #include "ListaEntidade.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadorComandos.h"
-#include "Personagem.h"
+#include "Inimigo.h"
 #include "Jogador.h"
 
 class Fase_teste

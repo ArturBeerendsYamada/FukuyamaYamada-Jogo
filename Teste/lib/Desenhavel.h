@@ -18,4 +18,6 @@ public:
 
 	void desenhar(GerenciadorGrafico& g);
 	void inicializarTextura(GerenciadorGrafico& g);
+	
+
 };

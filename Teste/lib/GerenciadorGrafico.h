@@ -22,5 +22,6 @@ class GerenciadorGrafico{
         bool carregarTextura(const std::string& caminho);
         void centralizar(const Vetor2F centro);
         sf::RenderWindow* getJanela() const;
+        std::map<const std::string, sf::Texture*> getTextura();
 
 };
