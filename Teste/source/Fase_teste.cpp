@@ -16,11 +16,23 @@ void Fase_teste::inicializar()
 {
 	gerenciadorGrafico = new GerenciadorGrafico;
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
-	ListaBolas.inserir(static_cast<Entidade*>(new Jogador(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(200.f, 200.f))));
-	ListaBolas.inserir(static_cast<Entidade*>(new Inimigo(Vetor2F(400.0f, 300.0f), "Italia_Countryball.png", Vetor2F(100.f, 0.f))));
-	ListaBolas.inserir(static_cast<Entidade*>(new Inimigo(Vetor2F(200.0f, 200.0f), "Japan_Countryball.png", Vetor2F(0.f, 500.f))));
-	ListaBolas.inserir(static_cast<Entidade*>(new Inimigo(Vetor2F(800.0f, 600.0f), "Alemanha_Countryball.png", Vetor2F(0.f, 0.f))));
-	ListaBolas.inserir(static_cast<Entidade*>(new Inimigo(Vetor2F(400.0f, 0.0f), "Russia_Countryball.png", Vetor2F(200.f, 200.f))));
+	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
+
+	Entidade* temp = static_cast<Entidade*>(new Jogador(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(800.f, 800.f), Vetor2F(200.f, 200.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(400.0f, 300.0f), "Italia_Countryball.png", Vetor2F(50.f, 0.f), Vetor2F(200.f, 200.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(200.0f, 200.0f), "Japan_Countryball.png", Vetor2F(0.f, 100.f), Vetor2F(200.f, 200.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(800.0f, 600.0f), "Alemanha_Countryball.png", Vetor2F(0.f, 0.f), Vetor2F(200.f, 200.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(400.0f, 0.0f), "Russia_Countryball.png", Vetor2F(100.f, 100.f), Vetor2F(200.f, 200.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 
 	ListaBolas.inicializarEntidades(*gerenciadorGrafico);
 
@@ -31,6 +43,7 @@ void Fase_teste::executar()
 {
 	sf::Time t;
 	sf::Event event;
+	//unsigned int win_lose_continue = 0;
 
 	relogio.restart();
 
@@ -46,6 +59,7 @@ void Fase_teste::executar()
 		//float scaler = 0.001;
 		gerenciadorGrafico->limpar();
 		ListaBolas.atualizarEntidades(t.asSeconds());
+		gerenciador_colisoes_fase_teste->verificarColisoes();
 		ListaBolas.desenharEntidades(*gerenciadorGrafico);
 		gerenciadorGrafico->mostrar();
 

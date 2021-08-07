@@ -2,9 +2,10 @@
 #include <iostream>
 using namespace std;
 
-Inimigo::Inimigo(Vetor2F pos, const char* caminhoTextura, Vetor2F vel):
-	Personagem(pos, caminhoTextura, vel)
+Inimigo::Inimigo(Vetor2F pos, const char* caminhoTextura, Vetor2F vel, Vetor2F tam):
+	Personagem(pos, caminhoTextura, vel, tam)
 {
+	idColisao = IdsCollisao::inimigo;
 }
 Inimigo::~Inimigo()
 {

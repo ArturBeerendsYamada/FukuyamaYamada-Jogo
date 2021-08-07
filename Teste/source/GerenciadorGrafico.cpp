@@ -34,8 +34,11 @@ void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posi
 
     sf::Sprite sprite;
 
-    sprite.setTexture(*text);
+    text->setSmooth(true);
 
+    sprite.setTexture(*text);
+    sprite.setOrigin(sf::Vector2f(100.0, 100.0));
+    sprite.setScale(sf::Vector2f((200.0/text->getSize().x),(200.0/text->getSize().y)));
     sprite.setPosition(posicao.x, posicao.y);
 
     janela->draw(sprite);

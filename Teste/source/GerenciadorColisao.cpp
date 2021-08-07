@@ -48,16 +48,15 @@ void GerenciadorColisoes::verificarColisoes()
     for (itr1 = colidiveis.begin(); itr1 != colidiveis.end(); itr1++)
     {
         std::set<Entidade *>::iterator itr2;
-        itr2 = itr1;
-        for (itr2; itr2 != colidiveis.end(); itr2++)
+        for (itr2 = itr1; itr2 != colidiveis.end(); itr2++)
         {
             Entidade *e1 = *itr1;
             Entidade *e2 = *itr2;
 
             if (estaoColidindo(e1, e2))
             {
-                e1->colidir(e2->getId(), e2->getPosicao(), e2->getTamanho());
-                e2->colidir(e1->getId(), e1->getPosicao(), e1->getTamanho());
+                e1->colidir(e2->getIdColisao(), e2->getPosicao(), e2->getTamanho());
+                e2->colidir(e1->getIdColisao(), e1->getPosicao(), e1->getTamanho());
             }
         }
     }

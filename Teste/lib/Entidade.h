@@ -2,16 +2,17 @@
 
 #include "Desenhavel.h"
 #include "Ids.h"
+#include "GerenciadorColisao.h"
 
 class Entidade : public Desenhavel
 {
 protected:
 	Vetor2F velocidade;
 	Vetor2F tamanho;
-	Ids id;
+	IdsCollisao idColisao;
 
 public:
-	Entidade(Vetor2F pos={0.0f, 0.0f}, const char *textu=nullptr, Vetor2F vel={0.f, 0.f});
+	Entidade(Vetor2F pos={0.0f, 0.0f}, const char *textu=nullptr, Vetor2F vel={0.f, 0.f}, Vetor2F tam={0.f, 0.f});
 	virtual ~Entidade();
 
 	void setVelocidade (const Vetor2F vel);
@@ -23,7 +24,7 @@ public:
 	void setTamanho(const Vetor2F tamanho);
     Vetor2F getTamanho() const;
 
-	void colidir(const Ids id,const Vetor2F pos,const Vetor2F tam);
-	Ids getId() const;
+	virtual void colidir(const IdsCollisao id,const Vetor2F pos,const Vetor2F tam);
+	IdsCollisao getIdColisao() const;
 
 };

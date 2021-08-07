@@ -1,7 +1,8 @@
 #pragma once
 
-enum Ids 
+enum IdsCollisao
 {
+    nulo,
     inimigo,
-    jogador 
+    jogador
 };
