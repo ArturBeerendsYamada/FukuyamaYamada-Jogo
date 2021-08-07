@@ -16,28 +16,43 @@ Vetor2F Entidade::getTamanho() const
 	return tamanho;
 }
 
-void Entidade::colidir(const IdsCollisao Id,const Vetor2F Pos,const Vetor2F Tam){
-	float deltaX = Pos.x - getPosicao().x;
-	float deltaY = Pos.y - getPosicao().y;
-	float interX = abs(deltaX) - (Tam.x / 2 + getTamanho().x / 2);
-	float interY = abs(deltaY) - (Tam.y / 2 + getTamanho().y / 2);
+void Entidade::mover(Vetor2F deslocamento)
+{
+	posicao = posicao + deslocamento;
+}
+
+void Entidade::colidir(Entidade* outro){
+	float deltaX = outro->getPosicao().x - this->getPosicao().x;
+	float deltaY = outro->getPosicao().y - this->getPosicao().y;
+	float interX = abs(deltaX) - (outro->getTamanho().x / 2 + this->getTamanho().x / 2);
+	float interY = abs(deltaY) - (outro->getTamanho().y / 2 + this->getTamanho().y / 2);
 
 	if(interY < 0.0f && interX < 0.0f){
-		printf("Colidiu %d %d\n", idColisao, Id);
+		printf("Colidiu %d %d\n", idColisao, outro->getIdColisao());
 		if(interX > interY){
+			printf("Colidiu de lado - ");
 			if(deltaX > 0.0f){
-				this->setPosicao(posicao - Vetor2F(fabs((interX/2)),0.0f));
+				printf("colisao pela esquerda\n");
+				this->mover(Vetor2F(interX/2.0, 0.0f));
+				outro->mover(Vetor2F(-interX/2.0, 0.0f));
 			}
 			else{
-				this->setPosicao(posicao + Vetor2F(fabs((interX/2)),0.0f));
+				printf("colisao pela direita\n");
+				this->mover(Vetor2F(-interX/2.0, 0.0f));
+				outro->mover(Vetor2F(interX/2.0, 0.0f));
 			}
 		}
 		else{
+			printf("colidiu de pe - ");
 			if(deltaY > 0.0f){
-				this->setPosicao(posicao - Vetor2F(0.0f,fabs((interY/2))));
+				printf("colisao por baixo\n");
+				this->mover(Vetor2F(0.0f, interY/2.0));
+				outro->mover(Vetor2F(0.0f, -interY/2.0));
 			}
 			else{
-				this->setPosicao(posicao + Vetor2F(0.0f,fabs((interY/2))));
+				printf("colisao por cima\n");
+				this->mover(Vetor2F(0.0f, -interY/2.0));
+				outro->mover(Vetor2F(0.0f, interY/2.0));
 			}
 		}
 	}

@@ -15,8 +15,16 @@ void Jogador::inicializar()
 {
 
 }
+
+void Jogador::desenhar(GerenciadorGrafico& g)
+{
+	g.desenhar(textura, posicao);
+	g.centralizar(posicao);
+}
+
 void Jogador::atualizar(float deltaT)
 {
+
 	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();
 	if(((pressionados >> GerenciadorComandos::esquerda1) % 2) == 1)//verifica se o bit relativo ao comando estah setado
 	{
@@ -36,14 +44,40 @@ void Jogador::atualizar(float deltaT)
 	}
 }
 
-void Jogador::colidir(IdsCollisao Id, Vetor2F Pos, Vetor2F Tam)
+/*void Jogador::colidir(Entidade* outro)
 {
-	float deltaX = Pos.x - getPosicao().x;
-	float deltaY = Pos.y - getPosicao().y;
-	float interX = abs(deltaX) - (Tam.x / 2 + getTamanho().x / 2);
-	float interY = abs(deltaY) - (Tam.y / 2 + getTamanho().y / 2);
+	float deltaX = outro->getPosicao().x - this->getPosicao().x;
+	float deltaY = outro->getPosicao().y - this->getPosicao().y;
+	float interX = abs(deltaX) - (outro->getTamanho().x / 2 + this->getTamanho().x / 2);
+	float interY = abs(deltaY) - (outro->getTamanho().y / 2 + this->getTamanho().y / 2);
 
 	if(interY < 0.0f && interX < 0.0f){
-		printf("Colidiu %d %d", idColisao, Id);
+		printf("Colidiu %d %d\n", idColisao, outro->getIdColisao());
+		if(interX > interY){
+			printf("Colidiu de lado");
+			if(deltaX > 0.0f){
+				printf("colisao pela esquerda");
+				this->mover(Vetor2F(-interX/2.0, 0.0f));
+				outro->mover(Vetor2F(interX/2.0, 0.0f));
+			}
+			else{
+				printf("colisao pela direita");
+				this->mover(Vetor2F(interX/2.0, 0.0f));
+				outro->mover(Vetor2F(-interX/2.0, 0.0f));
+			}
+		}
+		else{
+			printf("colidiu de cima");
+			if(deltaY > 0.0f){
+				printf("colisao por baixo");
+				this->mover(Vetor2F(0.0f, interY/2.0));
+				outro->mover(Vetor2F(0.0f, -interY/2.0));
+			}
+			else{
+				printf("colisao por cima");
+				this->mover(Vetor2F(0.0f, -interY/2.0));
+				outro->mover(Vetor2F(0.0f, interY/2.0));
+			}
+		}
 	}
-}
+}*/

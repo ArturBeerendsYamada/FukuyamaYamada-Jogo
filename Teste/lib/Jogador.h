@@ -13,6 +13,7 @@ public:
 	~Jogador();
 
 	void inicializar();
+	void desenhar(GerenciadorGrafico& g);
 	void atualizar(float deltaT);
-	void colidir(const IdsCollisao id,const Vetor2F pos,const Vetor2F tam);
+	//void colidir(Entidade* outro);
 };

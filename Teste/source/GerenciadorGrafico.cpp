@@ -3,7 +3,7 @@
 
 GerenciadorGrafico::GerenciadorGrafico():
     janela{new sf::RenderWindow(sf::VideoMode(800,600), "Game")},
-    camera{sf::Vector2f(400,300),sf::Vector2f(3200,2400)}
+    camera{sf::Vector2f(400.f,300.f),sf::Vector2f(1600.f,1200.f)}
 {
     janela->setView(camera);
 }
@@ -40,7 +40,7 @@ void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posi
     sprite.setOrigin(sf::Vector2f(100.0, 100.0));
     sprite.setScale(sf::Vector2f((200.0/text->getSize().x),(200.0/text->getSize().y)));
     sprite.setPosition(posicao.x, posicao.y);
-
+    janela->setView(camera);
     janela->draw(sprite);
 }
 

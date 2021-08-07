@@ -16,8 +16,8 @@ public:
 	void setPosicao (const Vetor2F pos);
 	const Vetor2F getPosicao() const;
 
-	void desenhar(GerenciadorGrafico& g);
+	virtual void desenhar(GerenciadorGrafico& g);
 	void inicializarTextura(GerenciadorGrafico& g);
-	
+
 
 };

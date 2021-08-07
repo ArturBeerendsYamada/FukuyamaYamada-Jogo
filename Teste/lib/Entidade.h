@@ -24,7 +24,9 @@ public:
 	void setTamanho(const Vetor2F tamanho);
     Vetor2F getTamanho() const;
 
-	virtual void colidir(const IdsCollisao id,const Vetor2F pos,const Vetor2F tam);
+	void mover(Vetor2F deslocamento);
+
+	virtual void colidir(Entidade* outro);
 	IdsCollisao getIdColisao() const;
 
 };
