@@ -18,7 +18,7 @@ class GerenciadorGrafico{
         ~GerenciadorGrafico();
         void mostrar() const;
         void limpar(int r = 0, int g = 0, int b = 0);
-        void desenhar(const std::string& caminho, const Vetor2F posicao);
+        void desenhar(const std::string& caminho, const Vetor2F posicao, const Vetor2F tamanho);
         bool carregarTextura(const std::string& caminho);
         void centralizar(const Vetor2F centro);
         sf::RenderWindow* getJanela() const;

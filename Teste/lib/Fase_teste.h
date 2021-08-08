@@ -9,6 +9,7 @@
 #include "GerenciadorColisao.h"
 #include "Inimigo.h"
 #include "Jogador.h"
+#include "Obstaculo.h"
 
 class Fase_teste
 {

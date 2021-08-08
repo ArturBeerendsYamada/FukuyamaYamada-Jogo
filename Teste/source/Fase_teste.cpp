@@ -18,19 +18,32 @@ void Fase_teste::inicializar()
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
 
-	Entidade* temp = static_cast<Entidade*>(new Jogador(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(800.f, 800.f), Vetor2F(150.f, 150.f)));
+	Entidade* temp;
+
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(1200.0f, 0.0f), "Russia_Countryball.png", Vetor2F(200.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
-	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(600.0f, 600.0f), "Italia_Countryball.png", Vetor2F(0.f, 0.f), Vetor2F(150.f, 150.f)));
+
+	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(0.0f, 1200.0f), "Praia.jpg", Vetor2F(1000.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
-	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(0.0f, 600.0f), "Japan_Countryball.png", Vetor2F(100.f, 00.f), Vetor2F(150.f, 150.f)));
+
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(600.0f, 600.0f), "Italia_Countryball.png", Vetor2F(200.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
-	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(600.0f, 0.0f), "Alemanha_Countryball.png", Vetor2F(0.f, 0.f), Vetor2F(150.f, 150.f)));
+
+	temp = static_cast<Entidade*>(new Jogador(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(200.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
-	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(1000.0f, 1000.0f), "Russia_Countryball.png", Vetor2F(00.f, 00.f), Vetor2F(150.f, 150.f)));
+
+	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(2200.0f, 1200.0f), "Floresta.jpg", Vetor2F(1000.f, 200.f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(0.0f, 600.0f), "Japan_Countryball.png", Vetor2F(200.f, 200.f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(600.0f, 0.0f), "Alemanha_Countryball.png", Vetor2F(200.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 

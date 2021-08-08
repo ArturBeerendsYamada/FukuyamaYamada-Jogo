@@ -4,5 +4,6 @@ enum IdsCollisao
 {
     nulo,
     inimigo,
-    jogador
+    jogador,
+    solido
 };

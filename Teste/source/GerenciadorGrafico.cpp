@@ -24,7 +24,7 @@ void GerenciadorGrafico::limpar(int r, int g, int b){
     janela->clear(sf::Color(r,g,b));
 }
 
-void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posicao){
+void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posicao, const Vetor2F tamanho){
     if (texturas.count(caminho) == 0){
         std::cout << "OPA! Imagem nao carregada em " << caminho << std::endl;
         exit(121);
@@ -37,8 +37,8 @@ void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posi
     text->setSmooth(true);
 
     sprite.setTexture(*text);
-    sprite.setOrigin(sf::Vector2f(100.0, 100.0));
-    sprite.setScale(sf::Vector2f((200.0/text->getSize().x),(200.0/text->getSize().y)));
+    sprite.setScale(sf::Vector2f((tamanho.x/text->getSize().x),(tamanho.y/text->getSize().y)));
+    sprite.setOrigin(sf::Vector2f(text->getSize().x/2.0, text->getSize().y/2.0));
     sprite.setPosition(posicao.x, posicao.y);
     janela->setView(camera);
     janela->draw(sprite);

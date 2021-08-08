@@ -1,20 +1,11 @@
 #include "../lib/Entidade.h"
 
-Entidade::Entidade(Vetor2F pos, const char *textu, Vetor2F vel, Vetor2F tam):
-	Desenhavel(pos, textu), velocidade(vel), tamanho(tam), idColisao(IdsCollisao::nulo){}
+Entidade::Entidade(Vetor2F pos, const char *textu, Vetor2F tam, Vetor2F vel):
+	Desenhavel(pos, textu, tam), velocidade(vel), idColisao(IdsCollisao::nulo){}
 Entidade::~Entidade(){}
 
 void Entidade::setVelocidade (const Vetor2F vel) {velocidade = vel;}
 const Vetor2F Entidade::getVelocidade () const {return velocidade;}
-
-void Entidade::setTamanho(const Vetor2F tamanho)
-{
-    this->tamanho = tamanho;
-}
-Vetor2F Entidade::getTamanho() const
-{
-	return tamanho;
-}
 
 void Entidade::mover(Vetor2F deslocamento)
 {
