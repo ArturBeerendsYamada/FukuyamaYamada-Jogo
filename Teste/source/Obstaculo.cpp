@@ -25,19 +25,23 @@ void Obstaculo::colidir(Entidade *outro)
 			if(deltaX > 0.0f){
 				if (outro->getIdColisao()==IdsCollisao::inimigo){
 					outro->mover(Vetor2F(-interX, 0.0f));
+					outro->naColisao(ESQUERDA, this);
 				}
 				else if (outro->getIdColisao()==IdsCollisao::jogador){
-					printf("parede pela esquerda\n");
+					//printf("parede pela esquerda\n");
 					outro->mover(Vetor2F(-interX, 0.0f));
+					outro->naColisao(ESQUERDA, this);
 				}
 			}
 			else{
 				if (outro->getIdColisao()==IdsCollisao::inimigo){
 					outro->mover(Vetor2F(interX, 0.0f));
+					outro->naColisao(DIREITA, this);
 				}
 				else if (outro->getIdColisao()==IdsCollisao::jogador){
-					printf("parede pela direita\n");
+					//printf("parede pela direita\n");
 					outro->mover(Vetor2F(interX, 0.0f));
+					outro->naColisao(DIREITA, this);
 				}
 			}
 		}
@@ -45,23 +49,25 @@ void Obstaculo::colidir(Entidade *outro)
 			if(deltaY > 0.0f){
 				if(outro->getIdColisao()==IdsCollisao::inimigo){
 					outro->mover(Vetor2F(0.0f, -interY));
+					outro->naColisao(ACIMA, this);
 				}
 				else if (outro->getIdColisao()==IdsCollisao::jogador)
 				{
-					printf("teto acima\n");
+					//printf("teto acima\n");
 					outro->mover(Vetor2F(0.0f, -interY));
-					//outro->setPular(true);
+					outro->naColisao(ACIMA, this);
 				}
 			}
 			else{
 				if(outro->getIdColisao()==IdsCollisao::inimigo){
 					outro->mover(Vetor2F(0.0f, interY));
+					outro->naColisao(ABAIXO, this);
 				}
 				else if (outro->getIdColisao()==IdsCollisao::jogador)
 				{
-					printf("chao abaixo\n");
-					outro->setVelocidade(Vetor2F(outro->getVelocidade().x, 0.0f));
+					//printf("chao abaixo\n");
 					outro->mover(Vetor2F(0.0f, interY));
+					outro->naColisao(ABAIXO, this);
 				}
 			}
 		}

@@ -2,8 +2,5 @@
 
 enum IdsCollisao
 {
-    nulo,
-    inimigo,
-    jogador,
-    solido
+    nulo, inimigo, jogador, solido, projetil
 };

@@ -3,11 +3,6 @@
 #include "Personagem.h"
 #include "GerenciadorComandos.h"
 
-#define VEL_MAX 100.0f
-#define PULO 600.0f
-#define ACCEL 1000.0f
-#define GRAV 1000.0f
-
 class Jogador : public Personagem
 {
 private:
@@ -25,4 +20,5 @@ public:
 	void desenhar(GerenciadorGrafico& g);
 	void atualizar(float deltaT);
 	void colidir(Entidade* outro);
+	void naColisao(Vetor2F direcao, Entidade* outro);
 };

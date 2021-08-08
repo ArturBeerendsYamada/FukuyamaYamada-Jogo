@@ -36,7 +36,7 @@ void Fase_teste::inicializar()
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 
-	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(2200.0f, 1200.0f), "Floresta.jpg", Vetor2F(1000.f, 200.f), Vetor2F(0.f, 0.f)));
+	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(1000.0f, 1400.0f), "Floresta.jpg", Vetor2F(1000.f, 200.f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 

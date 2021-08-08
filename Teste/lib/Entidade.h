@@ -23,6 +23,7 @@ public:
 	void mover(Vetor2F deslocamento);
 
 	virtual void colidir(Entidade* outro);
+	virtual void naColisao(Vetor2F direcao, Entidade* outro);
 	IdsCollisao getIdColisao() const;
 
 };

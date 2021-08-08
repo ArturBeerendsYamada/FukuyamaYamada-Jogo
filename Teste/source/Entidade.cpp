@@ -49,6 +49,20 @@ void Entidade::colidir(Entidade* outro){
 	}
 }
 
+void Entidade::naColisao(Vetor2F direcao, Entidade* outro)
+{
+	if (outro->getIdColisao() == IdsCollisao::solido){
+		if (direcao.y == 0.0){
+			this->velocidade.x = 0.0f;
+			outro->velocidade.x = 0.0f;
+		}
+		else{
+			this->velocidade.y = 0.0f;
+			outro->velocidade.y = 0.0f;
+		}
+	}
+}
+
 IdsCollisao Entidade::getIdColisao() const{
 	return idColisao;
 }
