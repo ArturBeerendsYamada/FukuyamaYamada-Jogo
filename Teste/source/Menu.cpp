@@ -53,6 +53,11 @@ int Menu::executar()
 			{
 				switch(event.key.code)
 				{
+					case sf::Keyboard::Escape:
+						if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+							janela->close();
+						break;
+
 					case sf::Keyboard::Up:
 						opcao_acima();
 						break;

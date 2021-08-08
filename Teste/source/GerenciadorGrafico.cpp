@@ -3,8 +3,9 @@
 
 GerenciadorGrafico::GerenciadorGrafico():
     janela{new sf::RenderWindow(sf::VideoMode(800,600), "Game")},
-    camera{sf::Vector2f(400,300),sf::Vector2f(800,600)}
+    camera{sf::Vector2f(400.f,300.f),sf::Vector2f(1600.f,1200.f)}
 {
+    //janela->setFramerateLimit(60);
     janela->setView(camera);
 }
 
@@ -24,7 +25,7 @@ void GerenciadorGrafico::limpar(int r, int g, int b){
     janela->clear(sf::Color(r,g,b));
 }
 
-void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posicao){
+void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posicao, const Vetor2F tamanho){
     if (texturas.count(caminho) == 0){
         std::cout << "OPA! Imagem nao carregada em " << caminho << std::endl;
         exit(121);
@@ -34,10 +35,13 @@ void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posi
 
     sf::Sprite sprite;
 
+    text->setSmooth(true);
+
     sprite.setTexture(*text);
-
+    sprite.setScale(sf::Vector2f((tamanho.x/text->getSize().x),(tamanho.y/text->getSize().y)));
+    sprite.setOrigin(sf::Vector2f(text->getSize().x/2.0, text->getSize().y/2.0));
     sprite.setPosition(posicao.x, posicao.y);
-
+    janela->setView(camera);
     janela->draw(sprite);
 }
 
@@ -62,3 +66,8 @@ void GerenciadorGrafico::centralizar(const Vetor2F centro){
 sf::RenderWindow* GerenciadorGrafico::getJanela() const{
     return janela;
 }
+
+std::map<const std::string, sf::Texture*> GerenciadorGrafico::getTextura(){
+    return texturas;
+}
+

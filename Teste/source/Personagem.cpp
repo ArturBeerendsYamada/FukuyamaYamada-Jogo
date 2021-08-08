@@ -1,9 +1,10 @@
 //#include "../headers/Personagem.h"
 #include "../lib/Personagem.h"
 
-Personagem::Personagem(Vetor2F pos, const char* caminhoTextura, Vetor2F vel):
-	Entidade(pos, caminhoTextura, vel)
+Personagem::Personagem(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel):
+	Entidade(pos, caminhoTextura, tam, vel)
 {
+	idColisao = IdsCollisao::jogador;
 }
 
 Personagem::~Personagem()
