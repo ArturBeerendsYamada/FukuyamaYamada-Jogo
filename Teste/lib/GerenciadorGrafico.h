@@ -16,6 +16,10 @@ class GerenciadorGrafico{
     public:
         GerenciadorGrafico();
         ~GerenciadorGrafico();
+
+        bool janelaAberta() const {return janela->isOpen();}
+        void fechaJanela() {janela->close();}
+
         void mostrar() const;
         void limpar(int r = 0, int g = 0, int b = 0);
         void desenhar(const std::string& caminho, const Vetor2F posicao, const Vetor2F tamanho);

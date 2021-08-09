@@ -129,4 +129,24 @@ unsigned int GerenciadorComandos::comandosBolas()
 	return nulo;*/
 }
 
+int  GerenciadorComandos::comandosMenu()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	{
+		while(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down));
+		return Comandos::abaixo;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+	{
+		while(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up));
+		return Comandos::acima;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return))
+	{
+		while(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return));
+		return Comandos::selecionar;
+	}
+	return nulo;
+}
+
 GerenciadorComandos* GerenciadorComandos::g = nullptr;

@@ -2,9 +2,21 @@
 
 #include "../lib/Principal.h"
 
-Menu::Menu():janela{new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "TheBallGame - MENU")}
+Menu::Menu()
 {
+	opcao_atual = 0;
+	gc = NULL;
+}
+Menu::~Menu(){
+	delete gc;
+}
 
+void Menu::inicializar(GerenciadorGrafico *gg)
+{
+	gg->limpar();
+	gg->centralizar(Vetor2F(400.0f, 300.0f));
+
+	gc = GerenciadorComandos::getComandos();
 	if (!font.loadFromFile("mytype.ttf"))
 	{
 		cout << "Fonte nao carregada" << endl;
@@ -40,73 +52,49 @@ Menu::Menu():janela{new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "TheBal
 	info.setString("Para navegar pelo menu, use as setas do teclado. Para selecionar uma opcao, aperte Enter");
 	info.setPosition(sf::Vector2f(10.f, 6.f));
 }
-Menu::~Menu(){}
 
-int Menu::executar()
+int Menu::executar(GerenciadorGrafico *gg)
 {
-	while(janela->isOpen())
+	switch(gc->comandosMenu())
 	{
-		sf::Event event;
-		while(janela->pollEvent(event))
-		{
-			if(event.type == sf::Event::KeyReleased)
+		case GerenciadorComandos::Comandos::acima:
+			opcao_acima();
+			break;
+
+		case GerenciadorComandos::Comandos::abaixo:
+			opcao_abaixo();
+			break;
+
+		case GerenciadorComandos::Comandos::selecionar:
+			switch (opcao_atual)
 			{
-				switch(event.key.code)
-				{
-					case sf::Keyboard::Escape:
-						if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-							janela->close();
-						break;
+				case 0:
+					return IdsMenu::fase0_abre;
 
-					case sf::Keyboard::Up:
-						opcao_acima();
-						break;
+				case 1:
+					return IdsMenu::ranking;
 
-					case sf::Keyboard::Down:
-						opcao_abaixo();
-						break;
+				case 2:
+					return IdsMenu::creditos;
 
-					case sf::Keyboard::Return:
-						switch (opcao_atual)
-						{
-							case 0:
-							janela->close();
-								return 0;
+				default:
+					return IdsMenu::fecha;
+			};
+			break;
 
-							case 1:
-								mostrar_ranking();
-								break;
-
-							case 2:
-								mostrar_creditos();
-								break;
-
-							default:
-								janela->close();
-								return 1;
-						};
-						break;
-
-					default:
-						break;
-				}
-
-			}
-
-			else if(event.type == sf::Event::Closed)
-				janela->close();
-		}
-
-		janela->clear(sf::Color(BEGE));//rgb para bege
-		for (int i=0;i<N_ITENS;i++)
-			janela->draw(indices_itens_menu[i]);
-		janela->draw(info);
-		janela->display();
-
-
+		default:
+			break;
 	}
-	exit(0);
+
+	gg->getJanela()->clear(sf::Color(BEGE));//rgb para bege
+	for (int i=0;i<N_ITENS;i++)
+		gg->getJanela()->draw(indices_itens_menu[i]);
+	gg->getJanela()->draw(info);
+	gg->getJanela()->display();
+
+	return menu_continua;
 }
+
 void Menu::opcao_acima()
 {
 	if(opcao_atual > 0)
@@ -122,6 +110,7 @@ void Menu::opcao_acima()
 		indices_itens_menu[opcao_atual].setCharacterSize(SEL_TAM_FONT);
 	}
 }
+
 void Menu::opcao_abaixo()
 {
 	if(opcao_atual < N_ITENS - 1)
@@ -138,22 +127,22 @@ void Menu::opcao_abaixo()
 	}
 }
 
-void Menu::mostrar_ranking()
+void Menu::mostrar_ranking(GerenciadorGrafico *gg)
 {
-	janela->clear(sf::Color(BEGE));
+	gg->getJanela()->clear(sf::Color(BEGE));
 	sf::Text em_breve;
 	em_breve.setFont(font);
 	em_breve.setFillColor(sf::Color::Red);
 	em_breve.setString("Ainda nao implementado\n:(");
-	janela->draw(em_breve);
-	janela->display();
+	gg->getJanela()->draw(em_breve);
+	gg->getJanela()->display();
 
-	while(janela->isOpen())
+	while(gg->getJanela()->isOpen())
 	{
 		sf::Event event;
-		while(janela->pollEvent(event))
+		while(gg->getJanela()->pollEvent(event))
 		{
-			if(event.type == sf::Event::KeyReleased)
+			if(gc->comandosMenu()!=GerenciadorComandos::Comandos::nulo)
 			{
 				return;
 			}
@@ -165,22 +154,22 @@ void Menu::mostrar_ranking()
 	}
 }
 
-void Menu::mostrar_creditos()
+void Menu::mostrar_creditos(GerenciadorGrafico *gg)
 {
-	janela->clear(sf::Color(BEGE));
+	gg->getJanela()->clear(sf::Color(BEGE));
 	sf::Text em_breve;
 	em_breve.setFont(font);
 	em_breve.setFillColor(sf::Color::Red);
 	em_breve.setString("Bla bla\n:)");
-	janela->draw(em_breve);
-	janela->display();
+	gg->getJanela()->draw(em_breve);
+	gg->getJanela()->display();
 
-	while(janela->isOpen())
+	while(gg->getJanela()->isOpen())
 	{
 		sf::Event event;
-		while(janela->pollEvent(event))
+		while(gg->getJanela()->pollEvent(event))
 		{
-			if(event.type == sf::Event::KeyReleased)
+			if(gc->comandosMenu()!=GerenciadorComandos::Comandos::nulo)
 			{
 				return;
 			}

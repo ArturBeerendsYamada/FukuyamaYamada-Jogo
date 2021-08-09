@@ -11,8 +11,10 @@ using namespace std;
 Jogador::Jogador(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel) :
 	Personagem(pos, caminhoTextura, tam, vel)
 {
+	idColisao = IdsCollisao::jogador;
 	gerenciador_comandos_jogador = GerenciadorComandos::getComandos();
 	pode_pular = false;
+	vida = true;
 }
 Jogador::~Jogador()
 {
@@ -60,7 +62,7 @@ void Jogador::atualizar(float deltaT)
 	//{
 	//	velocidade.y += ACCEL * deltaT;
 	//}
-	this->mover(velocidade*deltaT);
+	this->mover(velocidade * deltaT);
 }
 
 void Jogador::colidir(Entidade* outro)
@@ -170,6 +172,10 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro)
 		{
 			pode_pular = true;
 			velocidade.y = 0;
+		}
+		else
+		{
+			this->setVida(false);
 		}
 	}
 }
