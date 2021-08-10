@@ -1,16 +1,13 @@
 #include "../lib/Fase_teste.h"
 
-
 #include <iostream>
 using namespace std;
 
 Fase_teste::Fase_teste()
 {
-	printf("nova fase de testes\n");
 }
 Fase_teste::~Fase_teste()
 {
-	printf("deletando fase teste\n");
 	ListaBolas.destruirEntidades();
 	delete gerenciador_colisoes_fase_teste;
 	delete j;
@@ -18,12 +15,22 @@ Fase_teste::~Fase_teste()
 
 void Fase_teste::inicializar(GerenciadorGrafico* gg)
 {
-	printf("iniciando fase de testes\n");
-
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
 
 	Entidade* temp;
+
+	temp = static_cast<Entidade*>(new ArameFarpado(Vetor2F(-800.0f, 1200.0f), "ArameFarpado.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new OuricoTcheco(Vetor2F(150.0f, 900.0f), "OuricoTcheco.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new Mina(Vetor2F(-300.0f, 1125.0f), "Mina.png", Vetor2F(50.0f, 50.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 
 	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(1200.0f, 0.0f), "Russia_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
@@ -33,7 +40,6 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 
-
 	temp = static_cast<Entidade*>(new Inimigo(Vetor2F(600.0f, 600.0f), "Italia_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
@@ -42,7 +48,29 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 	ListaBolas.inserir(static_cast<Entidade*>(j));
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 
-	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(1000.0f, 1400.0f), "Floresta.jpg", Vetor2F(1000.f, 100.0f), Vetor2F(0.f, 0.f)));
+	temp = static_cast<Entidade*>(new OuricoTcheco(Vetor2F(-150.0f, 900.0f), "OuricoTcheco.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new OuricoTcheco(Vetor2F(-150.0f, 600.0f), "OuricoTcheco.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new OuricoTcheco(Vetor2F(-150.0f, 700.0f), "OuricoTcheco.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+	temp = static_cast<Entidade*>(new OuricoTcheco(Vetor2F(-150.0f, 600.0f), "OuricoTcheco.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new Mina(Vetor2F(300.0f, 1125.0f), "Mina.png", Vetor2F(50.0f, 50.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(1000.0f, 1300.0f), "Floresta.jpg", Vetor2F(1000.f, 100.0f), Vetor2F(0.f, 0.f)));
+	ListaBolas.inserir(temp);
+	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
+
+	temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(-1000.0f, 1300.0f), "Floresta.jpg", Vetor2F(1000.f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaBolas.inserir(temp);
 	gerenciador_colisoes_fase_teste->adicionarEntidade(temp);
 

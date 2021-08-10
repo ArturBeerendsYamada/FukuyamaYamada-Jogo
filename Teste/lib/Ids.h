@@ -6,7 +6,10 @@ enum IdsCollisao
 	inimigo,
 	jogador,
 	solido,
-	projetil
+	projetil,
+	mina,
+	ourico_tcheco,
+	arame_farpado
 };
 
 enum IdsMenu

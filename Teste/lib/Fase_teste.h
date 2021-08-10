@@ -8,6 +8,9 @@
 #include "Lista.h"
 #include "ListaEntidade.h"
 #include "Obstaculo.h"
+#include "Mina.h"
+#include "ArameFarpado.h"
+#include "OuricoTcheco.h"
 #include <SFML/Graphics.hpp>
 #include <time.h>
 
