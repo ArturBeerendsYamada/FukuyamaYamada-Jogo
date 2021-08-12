@@ -163,9 +163,9 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 void Jogador::atirar()
 {
 	tiroamigo = new ProjetilAmigo(Vetor2F(posicao.x, posicao.y), "projetilAmigo.png", Vetor2F(50.0f, 50.0f), Vetor2F(200.0f, 0), true);
-	fase->adicionar(tiroamigo);
+	fase->adicionar(static_cast<Entidade*>(tiroamigo));
 	//tiroamigo->inicializarTextura(fase->getGerenciadorGrafico());
-	fase->inicializarTextura(tiroamigo);
+	fase->inicializarTextura(static_cast<Entidade*>(tiroamigo));
 	tiroamigo->inicializar();
 	//fase->inicializarTextura(tiroamigo);
 	pode_atirar=false;

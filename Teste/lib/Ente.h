@@ -3,24 +3,23 @@
 #include "GerenciadorGrafico.h"
 #include "Vetor2D.h"
 
-class Desenhavel
+class Ente
 {
 protected:
 	Vetor2F posicao;
-	const char *textura;
+	const char* textura;
 	Vetor2F tamanho;
 
 public:
-	Desenhavel(Vetor2F pos={0.0f, 0.0f}, const char *textu=nullptr, const Vetor2F tam={0.0f, 0.0f});
-	virtual ~Desenhavel();
+	Ente(Vetor2F pos = { 0.0f, 0.0f }, const char* textu = nullptr, const Vetor2F tam = { 0.0f, 0.0f });
+	virtual ~Ente();
 
-	void setPosicao (const Vetor2F pos);
+	void setPosicao(const Vetor2F pos);
 	const Vetor2F getPosicao() const;
 
 	void setTamanho(const Vetor2F tamanho);
-    Vetor2F getTamanho() const;
+	Vetor2F getTamanho() const;
 
 	virtual void desenhar(GerenciadorGrafico& g);
-	//void inicializarTextura(GerenciadorGrafico& g);
 	void inicializarTextura(GerenciadorGrafico* g);
 };

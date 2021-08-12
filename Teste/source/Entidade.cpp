@@ -1,7 +1,7 @@
 #include "../lib/Entidade.h"
 
 Entidade::Entidade(Vetor2F pos, const char* textu, Vetor2F tam, Vetor2F vel) :
-	Desenhavel(pos, textu, tam),
+	Ente(pos, textu, tam),
 	velocidade(vel),
 	idColisao(IdsColisao::nulo)
 {}
@@ -22,7 +22,7 @@ void Entidade::mover(Vetor2F deslocamento)
 	posicao = posicao + deslocamento;
 }
 
-IdsColisao Entidade::getIdColisao() const
+int Entidade::getIdColisao() const
 {
 	return idColisao;
 }

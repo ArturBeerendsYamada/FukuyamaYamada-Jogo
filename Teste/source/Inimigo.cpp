@@ -28,7 +28,7 @@ void Inimigo::atualizar(float deltaT)
 	}
 	mover(velocidade * deltaT);
 
-	
+
 }
 
 

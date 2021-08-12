@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <iostream>
 
-Projetil::Projetil(const Vetor2F pos, const char *caminho, const Vetor2F tam, Vetor2F vel, bool existir) : 
-Entidade(pos, caminho, tam, vel)                                                     
+Projetil::Projetil(const Vetor2F pos, const char *caminho, const Vetor2F tam, Vetor2F vel, bool existir) :
+Entidade(pos, caminho, tam, vel)
 {
+	idColisao = IdsColisao::nulo;
     existe = existir;
 	alcance = 300;
 	//frente = true;
@@ -22,13 +23,6 @@ bool Projetil::getExiste() const
 void Projetil::setExiste(const bool existir)
 {
     existe = existir;
-}
-
-void Projetil::naColisao(Vetor2F Direcao, Entidade* Outro, float InterX, float InterY){
-/*  direcao = Direcao;
-	outro = Outro;
-	interY = InterY;
-	interX = InterX;*/
 }
 
 void Projetil::atualizar(float deltaT)

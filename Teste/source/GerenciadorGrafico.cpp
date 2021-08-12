@@ -1,9 +1,10 @@
 #include "../lib/GerenciadorGrafico.h"
 #include <iostream>
+using namespace std;
 
 GerenciadorGrafico::GerenciadorGrafico() :
 	janela { new sf::RenderWindow(sf::VideoMode(800, 600), "Game") },
-	camera { sf::Vector2f(400.f, 300.f), sf::Vector2f(2000.f, 1500.f) }
+	camera { sf::Vector2f(400.f, 300.f), sf::Vector2f(800.f, 600.f) }
 {
 	//janela->setFramerateLimit(60);
 	janela->setView(camera);
@@ -57,8 +58,10 @@ void GerenciadorGrafico::desenhar(const std::string& caminho, const Vetor2F posi
 
 bool GerenciadorGrafico::carregarTextura(const std::string& caminho)
 {
-	if (texturas.count(caminho) == 1)
+	if (texturas.count(caminho) > 0)
+	{
 		return true;
+	}
 	else
 	{
 		sf::Texture* text = new sf::Texture();
@@ -67,7 +70,6 @@ bool GerenciadorGrafico::carregarTextura(const std::string& caminho)
 			std::cout << "OPA! Imagem nao encontrada em " << caminho << std::endl;
 			exit(120);
 		}
-
 		texturas.emplace(caminho, text);
 		return true;
 	}
@@ -87,4 +89,24 @@ sf::RenderWindow* GerenciadorGrafico::getJanela() const
 std::map<const std::string, sf::Texture*> GerenciadorGrafico::getTextura()
 {
 	return texturas;
+}
+
+void GerenciadorGrafico::inicializarBackground(const std::string& caminho, Vetor2F tamanho)
+{
+	background_textura.loadFromFile(caminho);
+
+	background_textura.setSmooth(true);
+	background_textura.setRepeated(true);
+
+	background.setTextureRect(sf::IntRect(0, 0, tamanho.x*2, background_textura.getSize().y));
+	background.setTexture(background_textura);
+	background.setOrigin(background_textura.getSize().x, background_textura.getSize().y/2);
+	background.setPosition(tamanho.x/2, tamanho.y/12);
+	background.setScale(1, 1.9);
+
+}
+
+void GerenciadorGrafico::desenharBackground()
+{
+	janela->draw(background);
 }

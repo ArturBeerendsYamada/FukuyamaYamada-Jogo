@@ -1,16 +1,16 @@
 #pragma once
 
+#include "ArameFarpado.h"
 #include "GerenciadorColisao.h"
 #include "GerenciadorComandos.h"
 #include "GerenciadorGrafico.h"
 #include "Inimigo.h"
-#include "Jogador.h"
 #include "Japao.h"
+#include "Jogador.h"
 #include "Lista.h"
 #include "ListaEntidade.h"
-#include "Obstaculo.h"
 #include "Mina.h"
-#include "ArameFarpado.h"
+#include "Obstaculo.h"
 #include "OuricoTcheco.h"
 #include <SFML/Graphics.hpp>
 #include <time.h>
@@ -31,8 +31,8 @@ public:
 	~Fase_teste();
 	void inicializar(GerenciadorGrafico* gg);
 	int executar(GerenciadorGrafico* gg);
-	void adicionar(Entidade *e);
-	void inicializarTextura(Entidade *e);
+	void adicionar(Entidade* e);
+	void inicializarTextura(Entidade* e);
 	void remover(Entidade* e);
 	GerenciadorGrafico* getGerenciadorGrafico();
 	void verificarInimigos();

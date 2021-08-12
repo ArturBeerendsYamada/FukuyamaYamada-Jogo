@@ -9,6 +9,8 @@ Principal::Principal() :
 //janela{new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "TheBallGame")}
 //amigo(WIDTH/2, HEIGHT/2, "Brasil_Countryball.png")
 {
+    menu_inicial = NULL;
+    fase = NULL;
 	gg = new GerenciadorGrafico;
 	//janela->setPosition({0, 0});
 }
@@ -20,6 +22,7 @@ Principal::~Principal()
 	{
 		delete menu_inicial;
 	}
+    printf("oi");
 	if (fase)
 	{
 		delete fase;
@@ -69,4 +72,5 @@ void Principal::executar()
             controle = fase->executar(gg);
         }
     }
+    //exit(0);
 }

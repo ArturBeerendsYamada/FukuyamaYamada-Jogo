@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Desenhavel.h"
+#include "Ente.h"
 #include "GerenciadorColisao.h"
 #include "Ids.h"
 
-class Entidade : public Desenhavel
+class Entidade : public Ente
 {
 protected:
 	Vetor2F velocidade;
-	IdsColisao idColisao;
+	int idColisao;
 	bool vida;
 
 public:
@@ -33,5 +33,5 @@ public:
 	void mover(Vetor2F deslocamento);
 
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY) = 0;
-	IdsColisao getIdColisao() const;
+	int getIdColisao() const;
 };
