@@ -6,7 +6,7 @@
 #define ACIMA Vetor2F(0.0f, -1.0f)
 #define ABAIXO Vetor2F(0.0f, 1.0f)
 #define DIREITA Vetor2F(1.0f, 0.0f)
-#define ESQUERDA Vetor2F(1.0f, 0.0f)
+#define ESQUERDA Vetor2F(-1.0f, 0.0f)
 
 class Entidade;
 

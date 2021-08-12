@@ -1,6 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "GerenciadorGrafico.h"
+#include "GerenciadorComandos.h"
 #include <iostream>
 using namespace std;
 
@@ -11,24 +12,25 @@ using namespace std;
 
 #define BEGE 0xda, 0xc8, 0xb3
 
-
 class Menu
 {
-	private:
-		int opcao_atual;
-		sf::Font font;
-		sf::Text indices_itens_menu[N_ITENS];
-		sf::Text info;
-		sf::RenderWindow *janela;
+private:
+	int opcao_atual;
+	sf::Font font;
+	sf::Text indices_itens_menu[N_ITENS];
+	sf::Text info;
+	GerenciadorComandos* gc;
 
-	public:
-		Menu();
-		~Menu();
+	void opcao_acima();
+	void opcao_abaixo();
 
-		int executar();
-		void opcao_acima();
-		void opcao_abaixo();
+public:
+	Menu();
+	~Menu();
 
-		void mostrar_ranking();
-		void mostrar_creditos();
+	void inicializar(GerenciadorGrafico* gg);
+	int executar(GerenciadorGrafico* gg);
+
+	void mostrar_ranking(GerenciadorGrafico* gg);
+	void mostrar_creditos(GerenciadorGrafico* gg);
 };

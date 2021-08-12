@@ -22,7 +22,7 @@ void ListaEntidade::inicializarEntidades(GerenciadorGrafico &g)
 
 	while (p)
 	{
-		p->inicializarTextura(g);
+		p->inicializarTextura(&g);
 		p->inicializar();
 		p = lista.irProximo();
 	}
@@ -62,4 +62,9 @@ void ListaEntidade::destruirEntidades()
 	}
 
 	lista.esvaziar();
+}
+
+void ListaEntidade::removerEntidades(Entidade* info)
+{
+	lista.removerElemento(info);
 }

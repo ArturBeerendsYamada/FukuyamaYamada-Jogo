@@ -50,6 +50,17 @@ void Lista<TF>::ElementoLista<TE>::setProx(ElementoLista<TE>* Prox) {
 }
 
 template <typename TF>
+template <typename TE>
+void Lista<TF>::ElementoLista<TE>::remover() {
+  if(pElLAnt){
+    pElLAnt->pElLProx = pElLProx;
+  }
+  if(pElLProx){
+    pElLProx->pElLAnt = pElLAnt;
+  }
+}
+
+template <typename TF>
 Lista<TF>::Lista() :
   pElLIn{nullptr}, pElLFin{nullptr}, pElLAt{nullptr} {
 
@@ -123,3 +134,22 @@ TF Lista<TF>::irProximo() {
   return (pElLAt) ? pElLAt->getInfo() : nullptr;
 }
 
+template <typename TF>
+void Lista<TF>::removerElemento(TF elemento)
+{
+  voltarInicio();
+  for(voltarInicio(); pElLAt!=NULL; irProximo())
+  {
+    if(pElLAt->getInfo() == elemento)
+    {
+      if(pElLAt == pElLIn)
+        pElLIn = pElLAt->getProx();
+      if(pElLAt == pElLFin)
+        pElLFin = pElLAt->getAnt();
+      pElLAt->remover();
+      delete pElLAt;
+      voltarInicio();
+      return;
+    }
+  }
+}
