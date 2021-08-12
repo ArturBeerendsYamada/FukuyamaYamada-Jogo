@@ -8,7 +8,7 @@ class Entidade : public Desenhavel
 {
 protected:
 	Vetor2F velocidade;
-	IdsCollisao idColisao;
+	IdsColisao idColisao;
 	bool vida;
 
 public:
@@ -33,5 +33,5 @@ public:
 	void mover(Vetor2F deslocamento);
 
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY) = 0;
-	IdsCollisao getIdColisao() const;
+	IdsColisao getIdColisao() const;
 };

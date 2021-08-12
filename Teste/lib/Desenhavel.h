@@ -21,7 +21,6 @@ public:
     Vetor2F getTamanho() const;
 
 	virtual void desenhar(GerenciadorGrafico& g);
-	void inicializarTextura(GerenciadorGrafico& g);
-
-
+	//void inicializarTextura(GerenciadorGrafico& g);
+	void inicializarTextura(GerenciadorGrafico* g);
 };

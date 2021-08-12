@@ -58,8 +58,8 @@ void GerenciadorColisoes::verificarColisoes()
 			Entidade* e1 = *itr1;
 			Entidade* e2 = *itr2;
 			if (e1 != e2 && //soh testa se forem objetos diferentes e pelo menos um pode se mexer
-				((e1->getIdColisao() != IdsCollisao::mina && e1->getIdColisao() != IdsCollisao::arame_farpado && e1->getIdColisao() != IdsCollisao::solido)
-				|| (e2->getIdColisao() != IdsCollisao::mina && e2->getIdColisao() != IdsCollisao::arame_farpado && e2->getIdColisao() != IdsCollisao::solido)))
+				((e1->getIdColisao() != IdsColisao::mina && e1->getIdColisao() != IdsColisao::arame_farpado && e1->getIdColisao() != IdsColisao::solido)
+				|| (e2->getIdColisao() != IdsColisao::mina && e2->getIdColisao() != IdsColisao::arame_farpado && e2->getIdColisao() != IdsColisao::solido)))
 			{
 				float deltaX = e1->getPosicao().x - e2->getPosicao().x;
 				float deltaY = e1->getPosicao().y - e2->getPosicao().y;

@@ -5,6 +5,7 @@
 #include "GerenciadorGrafico.h"
 #include "Inimigo.h"
 #include "Jogador.h"
+#include "Japao.h"
 #include "Lista.h"
 #include "ListaEntidade.h"
 #include "Obstaculo.h"
@@ -20,7 +21,9 @@ private:
 	GerenciadorComandos* gerenciador_comandos_fase_teste;
 	GerenciadorColisoes* gerenciador_colisoes_fase_teste;
 	sf::Clock relogio;
-	ListaEntidade ListaBolas;
+	GerenciadorGrafico* gerenciador_grafico_fase_teste;
+	ListaEntidade ListaEntidades;
+	std::set<Inimigo*> inimigos;
 	Jogador* j;
 
 public:
@@ -28,4 +31,10 @@ public:
 	~Fase_teste();
 	void inicializar(GerenciadorGrafico* gg);
 	int executar(GerenciadorGrafico* gg);
+	void adicionar(Entidade *e);
+	void inicializarTextura(Entidade *e);
+	void remover(Entidade* e);
+	GerenciadorGrafico* getGerenciadorGrafico();
+	void verificarInimigos();
+	void adicionarInimigo(Inimigo* ini);
 };

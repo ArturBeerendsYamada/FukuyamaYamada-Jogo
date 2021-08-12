@@ -1,12 +1,16 @@
 #pragma once
 
-enum IdsCollisao
+enum IdsColisao
 {
 	nulo,
 	inimigo,
+	japao,
+	italia,
+	alemanha,
 	jogador,
 	solido,
-	projetil,
+	projetilAmigo,
+	projetilInimigo,
 	mina,
 	ourico_tcheco,
 	arame_farpado

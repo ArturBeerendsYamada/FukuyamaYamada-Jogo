@@ -17,4 +17,5 @@ public:
 	void atualizarEntidades(float t);
 	void desenharEntidades(GerenciadorGrafico &g);
 	void destruirEntidades();
+	void removerEntidades(Entidade* info);
 };

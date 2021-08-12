@@ -1,11 +1,11 @@
-#include "Obstaculo.h"
+#include "../lib/Obstaculo.h"
 
 Obstaculo::Obstaculo(Vetor2F pos, const char *textu, Vetor2F tam, Vetor2F vel):
 	Entidade(pos, textu, tam, vel)
 {
 	vel = Vetor2F(0.0f, 0.0f);
 	velocidade = vel;
-	idColisao = IdsCollisao::solido;
+	idColisao = IdsColisao::solido;
 }
 
 Obstaculo::~Obstaculo(){}

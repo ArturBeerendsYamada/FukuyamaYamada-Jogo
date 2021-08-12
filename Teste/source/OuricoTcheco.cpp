@@ -1,11 +1,11 @@
-#include <..\lib\OuricoTcheco.h>
+#include "../lib/OuricoTcheco.h"
 
 #define GRAV 4000.0
 
 OuricoTcheco::OuricoTcheco(Vetor2F pos, const char* textu, Vetor2F tam, Vetor2F vel) :
 	Obstaculo(pos, textu, tam, vel)
 {
-	idColisao = IdsCollisao::ourico_tcheco;
+	idColisao = IdsColisao::ourico_tcheco;
 }
 
 OuricoTcheco::~OuricoTcheco()
@@ -19,7 +19,7 @@ void OuricoTcheco::atualizar(float deltaT)
 
 void OuricoTcheco::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
 {
-	if (outro->getIdColisao() == IdsCollisao::solido)
+	if (outro->getIdColisao() == IdsColisao::solido)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -40,14 +40,14 @@ void OuricoTcheco::naColisao(Vetor2F direcao, Entidade* outro, float interX, flo
 			velocidade.x = 0.0f;
 		}
 	}
-	else if (outro->getIdColisao() == IdsCollisao::jogador)
+	else if (outro->getIdColisao() == IdsColisao::jogador)
 	{
 		if (direcao == ESQUERDA)
 			this->mover(Vetor2F(-interX/2.0, 0.0f));
 		else if(direcao == DIREITA)
 			this->mover(Vetor2F(interX/2.0, 0.0f));
 	}
-	else if(outro->getIdColisao() == IdsCollisao::ourico_tcheco)
+	else if(outro->getIdColisao() == IdsColisao::ourico_tcheco)
 	{
 		if (direcao == ESQUERDA)
 			this->mover(Vetor2F(-interX/2.0, 0.0f));

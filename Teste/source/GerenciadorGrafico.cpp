@@ -3,7 +3,7 @@
 
 GerenciadorGrafico::GerenciadorGrafico() :
 	janela { new sf::RenderWindow(sf::VideoMode(800, 600), "Game") },
-	camera { sf::Vector2f(400.f, 300.f), sf::Vector2f(800.f, 600.f) }
+	camera { sf::Vector2f(400.f, 300.f), sf::Vector2f(2000.f, 1500.f) }
 {
 	//janela->setFramerateLimit(60);
 	janela->setView(camera);

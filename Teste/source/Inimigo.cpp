@@ -8,7 +8,7 @@ using namespace std;
 Inimigo::Inimigo(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel) :
 	Personagem(pos, caminhoTextura, tam, vel)
 {
-	idColisao = IdsCollisao::inimigo;
+	idColisao = IdsColisao::inimigo;
 	pode_pular = false;
 }
 Inimigo::~Inimigo()
@@ -27,12 +27,14 @@ void Inimigo::atualizar(float deltaT)
 		velocidade.y = -sqrtf(2.0 * GRAV * PULO);
 	}
 	mover(velocidade * deltaT);
+
+	
 }
 
 
 void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
 {
-	if (outro->getIdColisao() == IdsCollisao::solido || outro->getIdColisao() == IdsCollisao::ourico_tcheco)
+	if (outro->getIdColisao() == IdsColisao::solido || outro->getIdColisao() == IdsColisao::ourico_tcheco)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -54,7 +56,7 @@ void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			velocidade.x = 0.0f;
 		}
 	}
-	else if (outro->getIdColisao() == IdsCollisao::inimigo)
+	else if (outro->getIdColisao() == IdsColisao::inimigo)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -62,10 +64,14 @@ void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			velocidade.y = 0;
 		}
 	}
-	else if (outro->getIdColisao() == IdsCollisao::jogador)
+	else if (outro->getIdColisao() == IdsColisao::jogador)
 	{
 		if(direcao==ACIMA)
 			this->mover(Vetor2F(0.0f, -interY/2.0));
+		this->setVida(false);
+	}
+	else if (outro->getIdColisao() == IdsColisao::projetilAmigo)
+	{
 		this->setVida(false);
 	}
 }

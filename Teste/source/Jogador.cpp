@@ -1,4 +1,6 @@
 #include "../lib/Jogador.h"
+#include "../lib/ProjetilAmigo.h"
+#include "../lib/Fase_teste.h"
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -11,9 +13,10 @@ using namespace std;
 Jogador::Jogador(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel) :
 	Personagem(pos, caminhoTextura, tam, vel)
 {
-	idColisao = IdsCollisao::jogador;
+	idColisao = IdsColisao::jogador;
 	gerenciador_comandos_jogador = GerenciadorComandos::getComandos();
 	pode_pular = false;
+	pode_atirar = true;
 	vida = true;
 }
 Jogador::~Jogador()
@@ -48,10 +51,14 @@ void Jogador::atualizar(float deltaT)
 	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();
 	if (((pressionados >> GerenciadorComandos::esquerda1) % 2) == 1) //verifica se o bit relativo ao comando estah setado
 	{
+		//if(tiroamigo)
+		//	tiroamigo->setFrente(false);
 		velocidade.x -= ACCEL;
 	}
 	if (((pressionados >> GerenciadorComandos::direita1) % 2))
 	{
+		//if(tiroamigo)
+		//	tiroamigo->setFrente(true);
 		velocidade.x += ACCEL;
 	}
 	if (((pressionados >> GerenciadorComandos::pular1) % 2) && pode_pular)
@@ -66,11 +73,28 @@ void Jogador::atualizar(float deltaT)
 	//	velocidade.y += ACCEL * deltaT;
 	//}
 	this->mover(velocidade * deltaT);
+
+	if(((pressionados >> GerenciadorComandos::atirar1)%2) && pode_atirar)
+	{
+		atirar();
+	}
+	if(tiroamigo){
+		if(!pode_atirar)
+		{
+			if(!tiroamigo->getExiste())
+			{
+				fase->remover(tiroamigo);
+				delete tiroamigo;
+				tiroamigo = NULL;
+				pode_atirar = true;
+			}
+		}
+	}
 }
 
 void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
 {
-	if (outro->getIdColisao() == IdsCollisao::solido)
+	if (outro->getIdColisao() == IdsColisao::solido)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -92,7 +116,7 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			velocidade.x = 0.0f;
 		}
 	}
-	else if (outro->getIdColisao() == IdsCollisao::inimigo)
+	else if (outro->getIdColisao() == IdsColisao::inimigo)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -105,15 +129,15 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			this->setVida(false);
 		}
 	}
-	else if (outro->getIdColisao() == IdsCollisao::mina || outro->getIdColisao() == IdsCollisao::projetil)
+	else if (outro->getIdColisao() == IdsColisao::mina || outro->getIdColisao() == IdsColisao::projetilInimigo)
 	{
 		this->setVida(false);
 	}
-	else if (outro->getIdColisao() == IdsCollisao::arame_farpado)
+	else if (outro->getIdColisao() == IdsColisao::arame_farpado)
 	{
 		this->mover(Vetor2F(-velocidade.x*tzinho*0.8, -velocidade.y*tzinho*0.8));
 	}
-	else if (outro->getIdColisao() == IdsCollisao::ourico_tcheco)
+	else if (outro->getIdColisao() == IdsColisao::ourico_tcheco)
 	{
 		if (direcao == ABAIXO)
 		{
@@ -134,4 +158,19 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 				this->mover(Vetor2F(interX/2.0, 0.0f));
 		}
 	}
+}
+
+void Jogador::atirar()
+{
+	tiroamigo = new ProjetilAmigo(Vetor2F(posicao.x, posicao.y), "projetilAmigo.png", Vetor2F(50.0f, 50.0f), Vetor2F(200.0f, 0), true);
+	fase->adicionar(tiroamigo);
+	//tiroamigo->inicializarTextura(fase->getGerenciadorGrafico());
+	fase->inicializarTextura(tiroamigo);
+	tiroamigo->inicializar();
+	//fase->inicializarTextura(tiroamigo);
+	pode_atirar=false;
+}
+
+void Jogador::setFase(Fase_teste* Fase){
+	fase = Fase;
 }

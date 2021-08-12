@@ -25,6 +25,8 @@ private:
 		TE getInfo() const;
 		void setInfo(TE Info);
 
+		void remover();
+
 	};
 
 	ElementoLista<TF>* pElLIn;
@@ -37,6 +39,7 @@ public:
 
 	void inserir(TF info);
 	void esvaziar();
+	void removerElemento(TF elemento);
 
 	TF voltarInicio();
 	TF irProximo();
