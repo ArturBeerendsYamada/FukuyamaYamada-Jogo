@@ -132,7 +132,7 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			this->setVida(false);
 		}
 	}
-	else if (outro->getIdColisao() == IdsColisao::mina || outro->getIdColisao() == IdsColisao::projetilInimigo)
+	else if (outro->getIdColisao() == IdsColisao::mina || outro->getIdColisao() == IdsColisao::projetilInimigo || outro->getIdColisao() == IdsColisao::alemanha)
 	{
 		this->setVida(false);
 	}
@@ -160,6 +160,15 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			else
 				this->mover(Vetor2F(interX/2.0, 0.0f));
 		}
+	}
+	else if (outro->getIdColisao() == IdsColisao::botao)
+    {
+        if (direcao == ABAIXO)
+        {
+            this->mover(Vetor2F(0.0f, interY));
+            pode_pular = true;
+            velocidade.y = 0.0f;
+        }
 	}
 }
 

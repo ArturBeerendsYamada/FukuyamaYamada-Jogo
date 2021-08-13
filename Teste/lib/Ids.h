@@ -13,7 +13,8 @@ enum IdsColisao
 	projetilInimigo,
 	mina,
 	ourico_tcheco,
-	arame_farpado
+	arame_farpado,
+	botao
 };
 
 enum IdsMenu

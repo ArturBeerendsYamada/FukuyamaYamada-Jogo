@@ -7,8 +7,13 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
 
+
+
 	Entidade* temp = NULL;
 	Japao* jap = NULL;
+	Alemanha* al = NULL;
+	BotaoBombas* bot = NULL;
+
 	int i, k;
 	int matriz[7][20] = {
 		{ 1, 0, 0, 0, 6, 2, 2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
@@ -77,6 +82,17 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 
 	j->setFase(this);
+
+	al = new Alemanha(Vetor2F(-800.0f, 300.0f ), "Alemanha_Countryball.png", Vetor2F(8*TILE, 8*TILE), Vetor2F(100.f, 0.f));
+    adicionarInimigo(static_cast<Inimigo*>(al));
+
+    //temp = new ProjetilAmigo(Vetor2F(10000.0f, 10000.0f), "projetilAmigo.png", Vetor2F(50.0f, 50.0f), Vetor2F(200.0f, 0), true);
+    //adicionar(temp);
+
+    bot = (new BotaoBombas(Vetor2F(150.0f, 400.0f ), "Botao.png", Vetor2F(TILE / 2, TILE /2), Vetor2F(0.f, 0.f), true));
+    temp = static_cast<Entidade*>(bot);
+    adicionar(temp);
+    bot->setAlemanha(al);
 
 	//temp = new ProjetilAmigo(Vetor2F(10000.0f, 10000.0f), "projetilAmigo.png", Vetor2F(50.0f, 50.0f), Vetor2F(200.0f, 0), true);
 	//adicionar(temp);

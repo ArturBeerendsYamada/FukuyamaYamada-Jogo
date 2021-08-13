@@ -6,12 +6,14 @@
 #include "GerenciadorGrafico.h"
 #include "Inimigo.h"
 #include "Japao.h"
+#include "Alemanha.h"
 #include "Jogador.h"
 #include "Lista.h"
 #include "ListaEntidade.h"
 #include "Mina.h"
 #include "Obstaculo.h"
 #include "OuricoTcheco.h"
+#include "BotaoBomba.h"
 #include <SFML/Graphics.hpp>
 #include <time.h>
 
