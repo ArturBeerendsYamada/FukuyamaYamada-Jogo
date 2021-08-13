@@ -25,23 +25,33 @@ void Menu::inicializar(GerenciadorGrafico *gg)
 	indices_itens_menu[0].setFillColor(sf::Color::Red);
 	indices_itens_menu[0].setStyle(0b11);
 	indices_itens_menu[0].setCharacterSize(SEL_TAM_FONT);
-	indices_itens_menu[0].setString("Fases");
+	indices_itens_menu[0].setString("Tutorial");
 	indices_itens_menu[0].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 1));
 
 	indices_itens_menu[1].setFont(font);
 	indices_itens_menu[1].setFillColor(sf::Color::Black);
-	indices_itens_menu[1].setString("Rankings");
+	indices_itens_menu[1].setString("Floresta");
 	indices_itens_menu[1].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 2));
 
 	indices_itens_menu[2].setFont(font);
 	indices_itens_menu[2].setFillColor(sf::Color::Black);
-	indices_itens_menu[2].setString("Creditos");
+	indices_itens_menu[2].setString("Praia");
 	indices_itens_menu[2].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 3));
 
 	indices_itens_menu[3].setFont(font);
 	indices_itens_menu[3].setFillColor(sf::Color::Black);
-	indices_itens_menu[3].setString("Sair");
+	indices_itens_menu[3].setString("Rankings");
 	indices_itens_menu[3].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 4));
+
+	indices_itens_menu[4].setFont(font);
+	indices_itens_menu[4].setFillColor(sf::Color::Black);
+	indices_itens_menu[4].setString("Creditos");
+	indices_itens_menu[4].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 5));
+
+	indices_itens_menu[5].setFont(font);
+	indices_itens_menu[5].setFillColor(sf::Color::Black);
+	indices_itens_menu[5].setString("Sair");
+	indices_itens_menu[5].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 6));
 
 	opcao_atual = 0;
 
@@ -71,9 +81,15 @@ int Menu::executar(GerenciadorGrafico *gg)
 					return IdsMenu::fase0_abre;
 
 				case 1:
-					return IdsMenu::ranking;
+					return IdsMenu::fase1_abre;
 
 				case 2:
+					return IdsMenu::ranking;
+
+				case 3:
+					return IdsMenu::ranking;
+
+				case 4:
 					return IdsMenu::creditos;
 
 				default:

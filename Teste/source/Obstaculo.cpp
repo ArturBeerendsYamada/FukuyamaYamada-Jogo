@@ -1,4 +1,4 @@
-#include "Obstaculo.h"
+#include "../lib/Obstaculo.h"
 
 Obstaculo::Obstaculo(Vetor2F pos, const char *textu, Vetor2F tam, Vetor2F vel):
 	Entidade(pos, textu, tam, vel)

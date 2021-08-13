@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Fase_teste.h"
+#include "Floresta.h"
 #include "GerenciadorGrafico.h"
 #include "Ids.h"
 #include "ListaEntidade.h"

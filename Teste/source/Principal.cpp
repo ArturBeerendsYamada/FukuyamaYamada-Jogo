@@ -64,9 +64,15 @@ void Principal::executar()
             delete fase;
             fase = new Fase_teste;
             fase->inicializar(gg);
-            controle = fase0_continua;
+            controle = fase_continua;
         }
-        if(controle == IdsMenu::fase0_continua){
+        if(controle == IdsMenu::fase1_abre){
+            delete fase;
+            fase = new Floresta;
+            fase->inicializar(gg);
+            controle = fase_continua;
+        }
+        if(controle == IdsMenu::fase_continua){
             controle = fase->executar(gg);
         }
     }

@@ -15,9 +15,11 @@
 #include <SFML/Graphics.hpp>
 #include <time.h>
 
+#define TILE 100.0f
+
 class Fase_teste
 {
-private:
+protected:
 	GerenciadorComandos* gerenciador_comandos_fase_teste;
 	GerenciadorColisoes* gerenciador_colisoes_fase_teste;
 	sf::Clock relogio;
@@ -25,11 +27,12 @@ private:
 	ListaEntidade ListaEntidades;
 	std::set<Inimigo*> inimigos;
 	Jogador* j;
+	virtual int reiniciaFase();
 
 public:
 	Fase_teste();
-	~Fase_teste();
-	void inicializar(GerenciadorGrafico* gg);
+	virtual ~Fase_teste();
+	virtual void inicializar(GerenciadorGrafico* gg);
 	int executar(GerenciadorGrafico* gg);
 	void adicionar(Entidade* e);
 	void inicializarTextura(Entidade* e);
