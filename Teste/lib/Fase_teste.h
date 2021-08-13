@@ -29,6 +29,7 @@ protected:
 	ListaEntidade ListaEntidades;
 	std::set<Inimigo*> inimigos;
 	Jogador* j;
+	Alemanha* al;
 	virtual int reiniciaFase();
 
 public:

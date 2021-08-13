@@ -110,3 +110,38 @@ void GerenciadorGrafico::desenharBackground()
 {
 	janela->draw(background);
 }
+
+void GerenciadorGrafico::mostrarTexto(const char* texto, Vetor2F posicao)
+{
+	sf::Font font;
+	if (!font.loadFromFile("mytype.ttf"))
+	{
+		cout << "Fonte nao carregada" << endl;
+	}
+	sf::Text texto_a_mostrar;
+	texto = texto;
+	texto_a_mostrar.setFont(font);
+	texto_a_mostrar.setPosition(posicao.x, posicao.y);
+	texto_a_mostrar.setStyle(1);
+	texto_a_mostrar.setCharacterSize(50);
+	texto_a_mostrar.setFillColor(sf::Color::Red);
+	texto_a_mostrar.setString(texto);
+	janela->draw(texto_a_mostrar);
+	janela->display();
+
+	sf::Clock relogio;
+	relogio.restart();
+	while(janela->isOpen())
+	{
+		sf::Event event;
+		if(relogio.getElapsedTime().asSeconds() >= 2)
+			return;
+		while(janela->pollEvent(event))
+		{
+			if(event.type == sf::Event::Closed)
+			{
+				exit(0);
+			}
+		}
+	}
+}

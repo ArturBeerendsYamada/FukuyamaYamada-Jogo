@@ -23,18 +23,22 @@ void Menu::inicializar(GerenciadorGrafico *gg)
 
 	indices_itens_menu[0].setFont(font);
 	indices_itens_menu[0].setFillColor(sf::Color::Red);
-	indices_itens_menu[0].setStyle(0b11);
+	indices_itens_menu[0].setStyle(1);
 	indices_itens_menu[0].setCharacterSize(SEL_TAM_FONT);
 	indices_itens_menu[0].setString("Tutorial");
 	indices_itens_menu[0].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 1));
 
 	indices_itens_menu[1].setFont(font);
 	indices_itens_menu[1].setFillColor(sf::Color::Black);
+	indices_itens_menu[1].setStyle(0);
+	indices_itens_menu[1].setCharacterSize(SEL_TAM_FONT/2);
 	indices_itens_menu[1].setString("Floresta");
 	indices_itens_menu[1].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 2));
 
 	indices_itens_menu[2].setFont(font);
 	indices_itens_menu[2].setFillColor(sf::Color::Black);
+	indices_itens_menu[2].setStyle(0);
+	indices_itens_menu[2].setCharacterSize(SEL_TAM_FONT/2);
 	indices_itens_menu[2].setString("Praia");
 	indices_itens_menu[2].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 3));
 
@@ -58,7 +62,8 @@ void Menu::inicializar(GerenciadorGrafico *gg)
 	info.setFont(font);
 	info.setCharacterSize(SEL_TAM_FONT/4);
 	info.setFillColor(sf::Color::Black);
-	info.setString("Para navegar pelo menu, use as setas do teclado. Para selecionar uma opcao, aperte Enter");
+	info.setString("Para navegar pelo menu, use as setas do teclado. Para selecionar uma opcao, aperte Enter\n\n"
+	"Dentro do jogo, utilize as teclas 'A', 'D' e 'W' para se movimentar, e a tecla 'S' para lancar um projetil");
 	info.setPosition(sf::Vector2f(10.f, 6.f));
 }
 
@@ -121,7 +126,7 @@ void Menu::opcao_acima()
 		opcao_atual--;
 
 		indices_itens_menu[opcao_atual].setFillColor(sf::Color::Red);
-		indices_itens_menu[opcao_atual].setStyle(0b11);
+		indices_itens_menu[opcao_atual].setStyle(1);
 		indices_itens_menu[opcao_atual].setCharacterSize(SEL_TAM_FONT);
 	}
 }
@@ -137,7 +142,7 @@ void Menu::opcao_abaixo()
 		opcao_atual++;
 
 		indices_itens_menu[opcao_atual].setFillColor(sf::Color::Red);
-		indices_itens_menu[opcao_atual].setStyle(0b11);
+		indices_itens_menu[opcao_atual].setStyle(1);
 		indices_itens_menu[opcao_atual].setCharacterSize(SEL_TAM_FONT);
 	}
 }
@@ -183,7 +188,6 @@ void Menu::mostrar_creditos(GerenciadorGrafico *gg)
 		"- ao professor Jean Marcelo Simao pela orientacao do trabalho\n"
 		"- Aos ex-monitores que disponibilizaram material guia\n"
 		"- Aos canais Professor Aquino, Barji, Hilze Vonck por videos educativos\n\n"
-		"- A"
 
 		"\nPressione Enter para retornar");
 	gg->getJanela()->draw(texto);

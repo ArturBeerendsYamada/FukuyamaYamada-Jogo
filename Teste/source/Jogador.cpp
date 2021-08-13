@@ -6,7 +6,7 @@
 using namespace std;
 
 #define VEL_MAX 100.0f
-#define PULO 400.0f
+#define PULO 210.0f
 #define ACCEL 1000.0f
 #define GRAV 4000.0f
 

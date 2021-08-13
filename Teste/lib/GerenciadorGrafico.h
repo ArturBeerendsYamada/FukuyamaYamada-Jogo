@@ -39,4 +39,5 @@ public:
 
 	void inicializarBackground(const std::string& caminho, Vetor2F tamanho);
 	void desenharBackground();
+	void mostrarTexto(const char* texto, Vetor2F posicao);
 };
