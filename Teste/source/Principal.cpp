@@ -9,7 +9,7 @@ Principal::Principal() :
 //janela{new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "TheBallGame")}
 //amigo(WIDTH/2, HEIGHT/2, "Brasil_Countryball.png")
 {
-    menu_inicial = NULL;
+    menu_inicial = new Menu;
     fase = NULL;
 	gg = new GerenciadorGrafico;
 	//janela->setPosition({0, 0});
@@ -22,7 +22,6 @@ Principal::~Principal()
 	{
 		delete menu_inicial;
 	}
-    printf("oi");
 	if (fase)
 	{
 		delete fase;
@@ -42,7 +41,6 @@ void Principal::executar()
 		}
 
         if(controle == IdsMenu::menu_abre){
-            menu_inicial = new Menu;
             menu_inicial->inicializar(gg);
             controle = IdsMenu::menu_continua;
             //printf("%f %f\n", gg->getJanela()->getView().getCenter().x,  gg->getJanela()->getView().getCenter().y);

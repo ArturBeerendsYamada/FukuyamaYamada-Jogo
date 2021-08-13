@@ -8,7 +8,6 @@ Menu::Menu()
 	gc = NULL;
 }
 Menu::~Menu(){
-	delete gc;
 }
 
 void Menu::inicializar(GerenciadorGrafico *gg)
@@ -157,11 +156,21 @@ void Menu::mostrar_ranking(GerenciadorGrafico *gg)
 void Menu::mostrar_creditos(GerenciadorGrafico *gg)
 {
 	gg->getJanela()->clear(sf::Color(BEGE));
-	sf::Text em_breve;
-	em_breve.setFont(font);
-	em_breve.setFillColor(sf::Color::Red);
-	em_breve.setString("Bla bla\n:)");
-	gg->getJanela()->draw(em_breve);
+	sf::Text texto;
+	texto.setFont(font);
+	texto.setFillColor(sf::Color::Black);
+	texto.setCharacterSize(SEL_TAM_FONT/3);
+	texto.setString(
+	"\nJogo desenvolvido pelos alunos Artur Beerends Yamada e Eric Yutaka Fukuyama\n"
+		"\nAgradecimentos (mais detalhes no documento relatorio):\n"
+		"- aos monitores da disciplina Tecnicas de Programacao por auxilio no desenvolvimento\n"
+		"- ao professor Jean Marcelo Simao pela orientacao do trabalho\n"
+		"- Aos ex-monitores que disponibilizaram material guia\n"
+		"- Aos canais Professor Aquino, Barji, Hilze Vonck por videos educativos\n\n"
+		"- A"
+
+		"\nPressione Enter para retornar");
+	gg->getJanela()->draw(texto);
 	gg->getJanela()->display();
 
 	while(gg->getJanela()->isOpen())

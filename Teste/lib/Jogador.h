@@ -12,6 +12,7 @@ private:
 	GerenciadorComandos* gerenciador_comandos_jogador;
 	bool pode_pular;
 	bool pode_atirar;
+	int direcao_projetil;
 	Fase_teste* fase;
 	ProjetilAmigo* tiroamigo;
 

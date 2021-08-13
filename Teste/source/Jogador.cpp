@@ -17,6 +17,7 @@ Jogador::Jogador(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F v
 	gerenciador_comandos_jogador = GerenciadorComandos::getComandos();
 	pode_pular = false;
 	pode_atirar = true;
+	direcao_projetil = 1;
 	vida = true;
 }
 Jogador::~Jogador()
@@ -54,12 +55,14 @@ void Jogador::atualizar(float deltaT)
 		//if(tiroamigo)
 		//	tiroamigo->setFrente(false);
 		velocidade.x -= ACCEL;
+		direcao_projetil = -1;
 	}
 	if (((pressionados >> GerenciadorComandos::direita1) % 2))
 	{
 		//if(tiroamigo)
 		//	tiroamigo->setFrente(true);
 		velocidade.x += ACCEL;
+		direcao_projetil = 1;
 	}
 	if (((pressionados >> GerenciadorComandos::pular1) % 2) && pode_pular)
 	{
@@ -162,7 +165,9 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 
 void Jogador::atirar()
 {
-	tiroamigo = new ProjetilAmigo(Vetor2F(posicao.x, posicao.y), "projetilAmigo.png", Vetor2F(50.0f, 50.0f), Vetor2F(200.0f, 0), true);
+	Vetor2F velocidade_projetil(direcao_projetil*1500.0f, 0.0f);
+
+	tiroamigo = new ProjetilAmigo(Vetor2F(posicao.x, posicao.y), "projetilAmigo.png", Vetor2F(20.0f, 20.0f), velocidade_projetil, true);
 	fase->adicionar(static_cast<Entidade*>(tiroamigo));
 	//tiroamigo->inicializarTextura(fase->getGerenciadorGrafico());
 	fase->inicializarTextura(static_cast<Entidade*>(tiroamigo));

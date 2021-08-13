@@ -22,7 +22,7 @@ Fase_teste::~Fase_teste()
 
 void Fase_teste::inicializar(GerenciadorGrafico* gg)
 {
-	gg->inicializarBackground("Floresta.jpg", Vetor2F(2000.0f, 700.0f));
+	//gg->inicializarBackground("Floresta.jpg", Vetor2F(2000.0f, 700.0f));
 	gerenciador_grafico_fase_teste = gg;
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
@@ -31,12 +31,12 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 	Japao* jap = NULL;
 	int i, k;
 	int matriz[7][20] = {
-		{ 0, 0, 0, 0, 0, 2, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 3, 0, 0, 3, 0, 5, 0, 0, 0, 0, 7, 0, 8, 0, 4, 4 },
+		{ 1, 0, 0, 0, 0, 2, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 3, 0, 0, 3, 0, 5, 0, 0, 0, 0, 7, 0, 8, 0, 4, 1 },
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1 },
 	};
 	for (i = 0; i < 7; i++)
@@ -92,7 +92,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 		}
 	}
 
-	j = (new Jogador(Vetor2F(0.0f, 0.0f), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	j = (new Jogador(Vetor2F(TILE, 0.0f), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 
@@ -103,7 +103,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 
 	for (i = 0; i < ((rand() % 3)+1); i++)
 	{
-		temp = static_cast<Entidade*>(new Inimigo(Vetor2F(200.0f, rand() % 5 * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+		temp = static_cast<Entidade*>(new Inimigo(Vetor2F(300.0f, rand() % 5 * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 		adicionarInimigo(static_cast<Inimigo*>(temp));
 	}
 
@@ -114,7 +114,7 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 {
 	sf::Time t;
 	t = relogio.restart();
-	gg->limpar(0xa2, 0xda, 0xff);
+	gg->limpar(200, 200, 200);
 	gg->desenharBackground();
 	ListaEntidades.atualizarEntidades(t.asSeconds());
 	gerenciador_colisoes_fase_teste->verificarColisoes();
