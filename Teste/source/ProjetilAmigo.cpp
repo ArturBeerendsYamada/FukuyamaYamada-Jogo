@@ -4,6 +4,7 @@
 ProjetilAmigo::ProjetilAmigo(const Vetor2F pos, const char *caminho, const Vetor2F tam, Vetor2F vel, const bool Existe) :
 Projetil(pos, caminho, tam, vel, Existe)
 {
+    alcance = 1500;
     idColisao = IdsColisao::projetilAmigo;
 }
 

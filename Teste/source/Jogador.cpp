@@ -84,7 +84,7 @@ void Jogador::atualizar(float deltaT)
 	if(tiroamigo){
 		if(!pode_atirar)
 		{
-			if(!tiroamigo->getExiste())
+			if(!tiroamigo->getExiste() || abs(tiroamigo->getPosicao().x - getPosicao().x) >= tiroamigo->getAlcance())
 			{
 				fase->remover(tiroamigo);
 				delete tiroamigo;
@@ -119,7 +119,7 @@ void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 			velocidade.x = 0.0f;
 		}
 	}
-	else if (outro->getIdColisao() == IdsColisao::inimigo)
+	else if (outro->getIdColisao() == IdsColisao::inimigo || outro->getIdColisao() == IdsColisao::japao || outro->getIdColisao() == IdsColisao::italia)
 	{
 		if (direcao == ABAIXO)
 		{

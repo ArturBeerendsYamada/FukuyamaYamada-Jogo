@@ -72,6 +72,12 @@ void Principal::executar()
             fase->inicializar(gg);
             controle = fase_continua;
         }
+        if(controle == IdsMenu::fase2_abre){
+            delete fase;
+            fase = new Praia;
+            fase->inicializar(gg);
+            controle = fase_continua;
+        }
         if(controle == IdsMenu::fase_continua){
             controle = fase->executar(gg);
         }

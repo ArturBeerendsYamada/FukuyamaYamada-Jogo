@@ -2,6 +2,7 @@
 
 #include "Fase_teste.h"
 #include "Floresta.h"
+#include "Praia.h"
 #include "GerenciadorGrafico.h"
 #include "Ids.h"
 #include "ListaEntidade.h"

@@ -89,7 +89,7 @@ int Menu::executar(GerenciadorGrafico *gg)
 					return IdsMenu::fase1_abre;
 
 				case 2:
-					return IdsMenu::ranking;
+					return IdsMenu::fase2_abre;
 
 				case 3:
 					return IdsMenu::ranking;
@@ -153,7 +153,7 @@ void Menu::mostrar_ranking(GerenciadorGrafico *gg)
 	sf::Text em_breve;
 	em_breve.setFont(font);
 	em_breve.setFillColor(sf::Color::Red);
-	em_breve.setString("Ainda nao implementado\n:(");
+	em_breve.setString("\n\tnao implementado :(\n\n");
 	gg->getJanela()->draw(em_breve);
 	gg->getJanela()->display();
 
@@ -183,8 +183,9 @@ void Menu::mostrar_creditos(GerenciadorGrafico *gg)
 	texto.setCharacterSize(SEL_TAM_FONT/3);
 	texto.setString(
 	"\nJogo desenvolvido pelos alunos Artur Beerends Yamada e Eric Yutaka Fukuyama\n"
+	"para a Disciplina Tecnicas de Programacao, no primeiro semestre de 2021\n"
 		"\nAgradecimentos (mais detalhes no documento relatorio):\n"
-		"- aos monitores da disciplina Tecnicas de Programacao por auxilio no desenvolvimento\n"
+		"- aos monitores da disciplina por auxilio no desenvolvimento\n"
 		"- ao professor Jean Marcelo Simao pela orientacao do trabalho\n"
 		"- Aos ex-monitores que disponibilizaram material guia\n"
 		"- Aos canais Professor Aquino, Barji, Hilze Vonck por videos educativos\n\n"

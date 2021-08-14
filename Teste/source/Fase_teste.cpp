@@ -34,7 +34,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 	int matriz[7][20] = {
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 		{ 1, 0, 0, 0, 0, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-		{ 1, 1, 1, 1, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+		{ 1, 1, 1, 1, 0, 1, 0, 2, 0, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
 		{ 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1 },
 		{ 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1 },
 		{ 1, 4, 0, 3, 0, 0, 1, 1, 1, 4, 4, 4, 4, 1, 1, 0, 0, 8, 5, 1 },
@@ -111,7 +111,7 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 {
 	sf::Time t;
 	t = relogio.restart();
-	gg->limpar(0xa2, 0xda, 0xff);
+	limpar();
 	gg->desenharBackground();
 	ListaEntidades.atualizarEntidades(t.asSeconds());
 	gerenciador_colisoes_fase_teste->verificarColisoes();
@@ -119,17 +119,20 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 	gg->mostrar();
 	verificarInimigos();
 
-	printf("oi\n");
-	system("pause");
 	if(al->getVida() == false){
-		gerenciador_grafico_fase_teste->mostrarTexto("Venceu ! ! !", j->getPosicao());
+		limpar();
+		gg->desenharBackground();
+		ListaEntidades.desenharEntidades(*gg);
+		gg->mostrar();
+		gg->mostrar();
+		gerenciador_grafico_fase_teste->mostrarTexto("Venceu ! ! !");
 		return IdsMenu::menu_abre;
 	}
-	if (j->getVida() == false || j->getPosicao().y > 15000.f)
+	if (j->getVida() == false || j->getPosicao().y > 1500.f)
 	{
 		//j->setVida(true);
 		//j->setPosicao(Vetor2F(0.0f, 1000.0f));
-		gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !", j->getPosicao());
+		gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
 		return reiniciaFase();
 	}
 	if (gerenciador_comandos_fase_teste->comandosFuncionalidades() == GerenciadorComandos::Comandos::comeco)
@@ -201,4 +204,9 @@ void Fase_teste::adicionarInimigo(Inimigo* ini)
 int Fase_teste::reiniciaFase()
 {
 	return IdsMenu::fase0_abre;
+}
+
+void Fase_teste::limpar()
+{
+	gerenciador_grafico_fase_teste->limpar(0x62, 0x3e, 0x26);
 }

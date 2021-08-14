@@ -47,7 +47,7 @@ void OuricoTcheco::naColisao(Vetor2F direcao, Entidade* outro, float interX, flo
 		else if(direcao == DIREITA)
 			this->mover(Vetor2F(interX/2.0, 0.0f));
 	}
-	else if(outro->getIdColisao() == IdsColisao::ourico_tcheco)
+	else if(outro->getIdColisao() == IdsColisao::ourico_tcheco || outro->getIdColisao() == IdsColisao::japao)
 	{
 		if (direcao == ESQUERDA)
 			this->mover(Vetor2F(-interX/2.0, 0.0f));

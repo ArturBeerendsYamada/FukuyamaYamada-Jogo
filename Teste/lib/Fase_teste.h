@@ -31,6 +31,7 @@ protected:
 	Jogador* j;
 	Alemanha* al;
 	virtual int reiniciaFase();
+	virtual void limpar();
 
 public:
 	Fase_teste();

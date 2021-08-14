@@ -20,7 +20,7 @@ void Japao::atualizar(float deltaT)
     deltaT = deltaT;
     if (tiroinimigo)
     {
-        if (abs(tiroinimigo->getPosicao().x - getPosicao().x) >= 100)
+        if (abs(tiroinimigo->getPosicao().x - getPosicao().x) >= tiroinimigo->getAlcance() || !tiroinimigo->getExiste())
         {
             fase->remover(tiroinimigo);
             tiroinimigo = nullptr;
@@ -37,7 +37,7 @@ void Japao::atualizar(float deltaT)
 
 void Japao::atirar()
 {
-    tiroinimigo = new ProjetilInimigo(Vetor2F(posicao.x, posicao.y), "projetilInimigo.png", Vetor2F(50.0, 50.0), Vetor2F(200.0, 0.0), true);
+    tiroinimigo = new ProjetilInimigo(Vetor2F(posicao.x, posicao.y), "projetilInimigo.png", Vetor2F(50.0, 50.0), Vetor2F(500.0, 0.0), true);
     fase->adicionar(tiroinimigo);
     fase->inicializarTextura(tiroinimigo);
     pode_atirar = false;
