@@ -12,6 +12,7 @@ Fase_teste::Fase_teste()
 	gerenciador_colisoes_fase_teste = NULL;
 	j = NULL;
 	al = NULL;
+	p2 = NULL;
 }
 Fase_teste::~Fase_teste()
 {
@@ -23,6 +24,7 @@ Fase_teste::~Fase_teste()
 void Fase_teste::inicializar(GerenciadorGrafico* gg)
 {
 	//gg->inicializarBackground("Floresta.jpg", Vetor2F(2000.0f, 700.0f));
+	printf("oi");
 	gerenciador_grafico_fase_teste = gg;
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
@@ -72,7 +74,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 6:
-					temp = static_cast<Entidade*>(new Inimigo(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					temp = static_cast<Entidade*>(new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(static_cast<Inimigo*>(temp));
 					break;
 
@@ -83,7 +85,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 8:
-					temp = static_cast<Entidade*>(new Inimigo(Vetor2F(k * TILE, i * TILE), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					temp = static_cast<Entidade*>(new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(static_cast<Inimigo*>(temp));
 					break;
 
@@ -93,7 +95,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 		}
 	}
 
-	j = (new Jogador(Vetor2F(TILE, TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	j = (new Brasil(Vetor2F(TILE, TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
@@ -102,7 +104,6 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
     adicionarInimigo(static_cast<Inimigo*>(al));
 
 	bot->setAlemanha(al);
-
 
 	ListaEntidades.inicializarEntidades(*gg);
 }
@@ -115,6 +116,7 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 	gg->desenharBackground();
 	ListaEntidades.atualizarEntidades(t.asSeconds());
 	gerenciador_colisoes_fase_teste->verificarColisoes();
+	gerenciarP2(gg);
 	ListaEntidades.desenharEntidades(*gg);
 	gg->mostrar();
 	verificarInimigos();
@@ -124,19 +126,19 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 		gg->desenharBackground();
 		ListaEntidades.desenharEntidades(*gg);
 		gg->mostrar();
-		gg->mostrar();
 		gerenciador_grafico_fase_teste->mostrarTexto("Venceu ! ! !");
-		return IdsMenu::menu_abre;
+		return IdsMenu::fase1_abre;
 	}
 	if (j->getVida() == false || j->getPosicao().y > 1500.f)
 	{
 		//j->setVida(true);
 		//j->setPosicao(Vetor2F(0.0f, 1000.0f));
+		printf("kiche");
 		gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
 		return reiniciaFase();
 	}
 	if (gerenciador_comandos_fase_teste->comandosFuncionalidades() == GerenciadorComandos::Comandos::comeco)
-	{
+	{	
 		return IdsMenu::menu_abre;
 	}
 	return IdsMenu::fase_continua;
@@ -209,4 +211,30 @@ int Fase_teste::reiniciaFase()
 void Fase_teste::limpar()
 {
 	gerenciador_grafico_fase_teste->limpar(0x62, 0x3e, 0x26);
+}
+
+void Fase_teste::gerenciarP2(GerenciadorGrafico* gg)
+{
+	unsigned int pressionados = gerenciador_comandos_fase_teste->comandosBolas();
+	if (!p2)
+	{
+
+		if(((pressionados >> GerenciadorComandos::adicionar2)%2))
+		{
+					printf("Entrou\n");
+
+			p2 = new Russia(j->getPosicao(), "Russia_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f));
+			ListaEntidades.inserir(static_cast<Entidade*>(p2));
+			gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(p2));
+			p2->setFase(this);
+			p2->inicializarTextura(gg);
+	
+		}
+	}
+	else if (((pressionados >> GerenciadorComandos::remover2)%2))
+	{
+		remover(p2);
+		delete p2;
+		p2 = nullptr;
+	}
 }

@@ -84,7 +84,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 		}
 	}
 
-	j = (new Jogador(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	j = (new Brasil(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);

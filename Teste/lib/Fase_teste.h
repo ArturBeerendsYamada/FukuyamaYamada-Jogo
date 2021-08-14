@@ -4,10 +4,11 @@
 #include "GerenciadorColisao.h"
 #include "GerenciadorComandos.h"
 #include "GerenciadorGrafico.h"
-#include "Inimigo.h"
+#include "Italia.h"
 #include "Japao.h"
 #include "Alemanha.h"
-#include "Jogador.h"
+#include "Brasil.h"
+#include "Russia.h"
 #include "Lista.h"
 #include "ListaEntidade.h"
 #include "Mina.h"
@@ -28,7 +29,8 @@ protected:
 	GerenciadorGrafico* gerenciador_grafico_fase_teste;
 	ListaEntidade ListaEntidades;
 	std::set<Inimigo*> inimigos;
-	Jogador* j;
+	Brasil* j;
+	Russia* p2;
 	Alemanha* al;
 	virtual int reiniciaFase();
 	virtual void limpar();
@@ -44,4 +46,6 @@ public:
 	GerenciadorGrafico* getGerenciadorGrafico();
 	void verificarInimigos();
 	void adicionarInimigo(Inimigo* ini);
+
+	virtual void gerenciarP2(GerenciadorGrafico* gg);
 };

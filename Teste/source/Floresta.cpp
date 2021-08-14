@@ -12,7 +12,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 
 
 	Entidade* temp = NULL;
-	Inimigo* ini = NULL;
+	Italia* ini = NULL;
 	Japao* jap = NULL;
 	BotaoBombas* bot = NULL;
 
@@ -21,7 +21,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 	float pos_x = 5*TILE, pos_y = 0;
 	do{
 		pos_y = (float)((rand()%300));
-		ini = (new Inimigo(Vetor2F(pos_x, pos_y), "Italia_countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.0f, 0.0f)));
+		ini = (new Italia(Vetor2F(pos_x, pos_y), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.0f, 0.0f)));
 		adicionarInimigo(ini);
 		pos_x += (float)(rand()%500)+100;
 	}while(pos_x<14*TILE);
@@ -88,7 +88,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 6:
-					ini = (new Inimigo(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					ini = (new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(ini);
 					break;
 
@@ -99,7 +99,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 8:
-					ini =(new Inimigo(Vetor2F(k * TILE, i * TILE), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					ini =(new Italia(Vetor2F(k * TILE, i * TILE), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(ini);
 					break;
 
@@ -109,7 +109,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 		}
 	}
 
-	j = (new Jogador(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
+	j = (new Brasil(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);

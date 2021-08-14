@@ -4,7 +4,7 @@
 #define HEIGHT 600
 
 Principal::Principal() :
-	menu_inicial(nullptr),
+	/*menu_inicial(nullptr),*/
 	fase(nullptr) //:
 //janela{new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "TheBallGame")}
 //amigo(WIDTH/2, HEIGHT/2, "Brasil_Countryball.png")
@@ -31,7 +31,6 @@ Principal::~Principal()
 void Principal::executar()
 {
     int controle = menu_abre;
-
     sf::Event event;
     while(gg->janelaAberta()){
         while (gg->getJanela()->pollEvent(event))
@@ -41,7 +40,9 @@ void Principal::executar()
 		}
 
         if(controle == IdsMenu::menu_abre){
+            printf("Opa");
             menu_inicial->inicializar(gg);
+
             controle = IdsMenu::menu_continua;
             //printf("%f %f\n", gg->getJanela()->getView().getCenter().x,  gg->getJanela()->getView().getCenter().y);
         }
@@ -49,6 +50,7 @@ void Principal::executar()
             controle = menu_inicial->executar(gg);
         }
         if(controle == IdsMenu::ranking){
+        printf("ola");
             menu_inicial->mostrar_ranking(gg);
             controle = IdsMenu::menu_continua;
         }
@@ -61,13 +63,21 @@ void Principal::executar()
         }
 
         if(controle == IdsMenu::fase0_abre){
-            delete fase;
+            printf("1");
+            if(fase)
+                delete fase;
+            printf("2");
+            fase = NULL;
             fase = new Fase_teste;
+            printf("3");
             fase->inicializar(gg);
+            printf("4");
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase1_abre){
-            delete fase;
+            if(fase)
+                delete fase;
+            fase = NULL;
             fase = new Floresta;
             fase->inicializar(gg);
             controle = fase_continua;

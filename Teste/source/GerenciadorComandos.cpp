@@ -29,14 +29,14 @@ GerenciadorComandos::Comandos  GerenciadorComandos::comandosFuncionalidades()
 	{
 		return comeco;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M))
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M))
 	{
 		return adicionar2;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::N))
 	{
 		return remover2;
-	}
+	}*/
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
 	{
 		return pausar;
@@ -91,6 +91,14 @@ unsigned int GerenciadorComandos::comandosBolas()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
 		pressionados += 1 << atirar2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M))
+	{
+		pressionados += 1 << adicionar2;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::N))
+	{
+		pressionados += 1 << remover2;
 	}
 	return pressionados;
 	/*

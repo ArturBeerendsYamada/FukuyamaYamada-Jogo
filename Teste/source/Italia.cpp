@@ -1,44 +1,39 @@
-#include "../lib/Inimigo.h"
+#include "../lib/Italia.h"
+#include "../lib/Fase_teste.h"
 #include <iostream>
-using namespace std;
 
 #define GRAV 4000.0
 #define PULO 300.0
 
-Inimigo::Inimigo(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel) :
-	Personagem(pos, caminhoTextura, tam, vel)
+Italia::Italia(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel):
+Inimigo(pos, caminhoTextura, tam, vel)
 {
-	idColisao = IdsColisao::inimigo;
-}
-Inimigo::~Inimigo()
-{
+    tiroinimigo = NULL;
+    pode_pular = true;
+    idColisao = IdsColisao::inimigo;
 }
 
-void Inimigo::inicializar()
+Italia::~Italia(){}
+
+void Italia::atualizar(float deltaT)
 {
-}
-void Inimigo::atualizar(float deltaT)
-{
-	/*velocidade.y += GRAV * deltaT;
+    velocidade.y += GRAV * deltaT;
 	if (pode_pular)
 	{
 		pode_pular = false;
 		velocidade.y = -sqrtf(2.0 * GRAV * PULO);
-	}*/
+	}
 	mover(velocidade * deltaT);
-
-
 }
 
-
-void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
+void Italia::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
 {
 	if (outro->getIdColisao() == IdsColisao::solido || outro->getIdColisao() == IdsColisao::ourico_tcheco)
 	{
 		if (direcao == ABAIXO)
 		{
 			this->mover(Vetor2F(0.0f, interY));
-			//pode_pular = true;
+			pode_pular = true;
 			velocidade.y = 0.0f;
 		}
 		else if (direcao == ACIMA)
@@ -59,7 +54,7 @@ void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 	{
 		if (direcao == ABAIXO)
 		{
-			//pode_pular = true;
+			pode_pular = true;
 			velocidade.y = 0;
 		}
 	}

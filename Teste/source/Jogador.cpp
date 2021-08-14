@@ -19,12 +19,9 @@ Jogador::Jogador(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F v
 	pode_atirar = true;
 	direcao_projetil = 1;
 	vida = true;
+	tzinho = 0.0f;
 }
 Jogador::~Jogador()
-{
-}
-
-void Jogador::inicializar()
 {
 }
 
@@ -37,17 +34,17 @@ bool Jogador::getPular()
 	return pode_pular;
 }
 
+/*
 void Jogador::desenhar(GerenciadorGrafico& g)
 {
 	g.desenhar(textura, posicao, tamanho);
 	g.centralizar(posicao);
 }
-
-float tzinho = 0.0f;
+*/
 
 void Jogador::atualizar(float deltaT)
 {
-	tzinho = deltaT;
+/*	tzinho = deltaT;
 	velocidade.x = 0.0f;
 	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();
 	if (((pressionados >> GerenciadorComandos::esquerda1) % 2) == 1) //verifica se o bit relativo ao comando estah setado
@@ -93,6 +90,7 @@ void Jogador::atualizar(float deltaT)
 			}
 		}
 	}
+*/
 }
 
 void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
