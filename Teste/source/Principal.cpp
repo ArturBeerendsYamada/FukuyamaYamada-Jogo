@@ -61,23 +61,25 @@ void Principal::executar()
         }
 
         if(controle == IdsMenu::fase0_abre){
-            if(fase)
-                delete fase;
+        //    if(fase)
+        //        delete fase;
             fase = NULL;
-            fase = new Fase_teste;
+            fase = new Tutorial();
             fase->inicializar(gg);
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase1_abre){
-            if(fase)
-                delete fase;
+
+         //   if(fase)
+         //       delete fase;
             fase = NULL;
-            fase = new Floresta;
+            fase = new Floresta();
+            	printf("fase1princ\n");
             fase->inicializar(gg);
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase2_abre){
-            delete fase;
+            //delete fase;
             fase = new Praia;
             fase->inicializar(gg);
             controle = fase_continua;

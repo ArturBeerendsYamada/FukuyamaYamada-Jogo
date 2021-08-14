@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Fase_teste.h"
+#include "Fase.h"
 #include "Floresta.h"
 #include "Praia.h"
+#include "Tutorial.h"
 #include "GerenciadorGrafico.h"
 #include "Ids.h"
 #include "ListaEntidade.h"
@@ -15,7 +16,7 @@ class Principal
 private:
 	GerenciadorGrafico* gg;
 	Menu* menu_inicial;
-	Fase_teste* fase;
+	Fase* fase;
 
 public:
 	Principal();

@@ -3,12 +3,12 @@
 #include "Inimigo.h"
 #include "ProjetilInimigo.h"
 
-class Fase_teste;
+class Fase;
 
 class Italia: public Inimigo
 {
 private:
-    Fase_teste* fase;
+    //Fase* fase;
     ProjetilInimigo* tiroinimigo;
     bool pode_pular;
 

@@ -34,4 +34,6 @@ public:
 
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY) = 0;
 	int getIdColisao() const;
+
+	const char* getTextura();
 };

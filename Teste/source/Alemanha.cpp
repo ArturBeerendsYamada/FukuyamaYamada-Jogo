@@ -41,7 +41,7 @@ void Alemanha::naColisao(Vetor2F direcao, Entidade* outro, float interX, float i
     botao = Botao;
 }*/
 
-void Alemanha::setFase(Fase_teste* Fase){
+void Alemanha::setFase(Fase* Fase){
     fase = Fase;
 }
 

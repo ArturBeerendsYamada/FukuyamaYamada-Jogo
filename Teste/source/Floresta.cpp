@@ -1,13 +1,19 @@
 #include "../lib/Floresta.h"
 
+Floresta::Floresta():
+Fase()
+{}
 
+Floresta::~Floresta(){
+
+}
 
 void Floresta::inicializar(GerenciadorGrafico* gg)
 {
 	gg->inicializarBackground("Floresta.jpg", Vetor2F(6000.0f, 1000.0f));
-	gerenciador_grafico_fase_teste = gg;
-	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
-	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
+	gerenciador_grafico_Fase = gg;
+	gerenciador_comandos_Fase = GerenciadorComandos::getComandos();
+	gerenciador_colisoes_Fase = new GerenciadorColisoes;
 
 
 
@@ -111,7 +117,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 
 	j = (new Brasil(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
-	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
+	gerenciador_colisoes_Fase->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
 
 	al = new Alemanha(Vetor2F(-800.0f, 1000.0f ), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f));
@@ -136,5 +142,5 @@ int Floresta::proximaFase()
 
 void Floresta::limpar()
 {
-	gerenciador_grafico_fase_teste->limpar(0xa2, 0xda, 0xff);
+	gerenciador_grafico_Fase->limpar(0xa2, 0xda, 0xff);
 }

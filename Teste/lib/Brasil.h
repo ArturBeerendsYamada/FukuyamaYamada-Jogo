@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Jogador.h"
-//#include "Fase_teste.h"
+//#include "Fase.h"
 
-class Fase_teste;
+class Fase;
 
 class Brasil : public Jogador
 {

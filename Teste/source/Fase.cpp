@@ -1,31 +1,32 @@
-/*#include "../lib/Fase_teste.h"
+#include "../lib/Fase.h"
 
 #include <iostream>
 #include <list>
 using namespace std;
 
 
-Fase_teste::Fase_teste()
+Fase::Fase()
 {
-	gerenciador_grafico_fase_teste = NULL;
-	gerenciador_comandos_fase_teste = NULL;
-	gerenciador_colisoes_fase_teste = NULL;
+	gerenciador_grafico_Fase = NULL;
+	gerenciador_comandos_Fase = NULL;
+	gerenciador_colisoes_Fase = NULL;
 	j = NULL;
 	al = NULL;
 	p2 = NULL;
 }
-Fase_teste::~Fase_teste()
+Fase::~Fase()
 {
-	ListaEntidades.destruirEntidades();
-	delete gerenciador_colisoes_fase_teste;
+    ListaEntidades.destruirEntidades();
+	printf("oi\n");
+	delete gerenciador_colisoes_Fase;
 }
 
-void Fase_teste::inicializar(GerenciadorGrafico* gg)
+void Fase::inicializar(GerenciadorGrafico* gg)
 {
-	gg->inicializarBackground("Invisivel.png", Vetor2F(2000.0f, 700.0f));
-	gerenciador_grafico_fase_teste = gg;
-	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
-	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
+/*	gg->inicializarBackground("Invisivel.png", Vetor2F(2000.0f, 700.0f));
+	gerenciador_grafico_Fase = gg;
+	gerenciador_comandos_Fase = GerenciadorComandos::getComandos();
+	gerenciador_colisoes_Fase = new GerenciadorColisoes;
 
 	Entidade* temp = NULL;
 	BotaoBombas* bot = NULL;
@@ -95,7 +96,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 
 	j = (new Brasil(Vetor2F(TILE, TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
-	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
+	gerenciador_colisoes_Fase->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
 
 	al = new Alemanha(Vetor2F(22 * TILE, 5 * TILE), "Alemanha_Countryball.png", Vetor2F(4*TILE, 4*TILE), Vetor2F(0.f, 0.f));
@@ -104,16 +105,17 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 	bot->setAlemanha(al);
 
 	ListaEntidades.inicializarEntidades(*gg);
+*/
 }
 
-int Fase_teste::executar(GerenciadorGrafico* gg)
+int Fase::executar(GerenciadorGrafico* gg)
 {
 	sf::Time t;
 	t = relogio.restart();
 	limpar();
 	gg->desenharBackground();
 	ListaEntidades.atualizarEntidades(t.asSeconds());
-	gerenciador_colisoes_fase_teste->verificarColisoes();
+	gerenciador_colisoes_Fase->verificarColisoes();
 	gerenciarP2(gg);
 	ListaEntidades.desenharEntidades(*gg);
 	gg->mostrar();
@@ -125,7 +127,7 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 		ListaEntidades.desenharEntidades(*gg);
 		gg->mostrar();
 		gg->mostrar();
-		gerenciador_grafico_fase_teste->mostrarTexto("Venceu ! ! !");
+		gerenciador_grafico_Fase->mostrarTexto("Venceu ! ! !");
 		return proximaFase();
 	}
 	if (j->getVida() == false || j->getPosicao().y > 1500.f)
@@ -133,49 +135,49 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 		//j->setVida(true);
 		//j->setPosicao(Vetor2F(0.0f, 1000.0f));
 		//printf("kiche");
-		gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
+		gerenciador_grafico_Fase->mostrarTexto("Perdeu ! ! !");
 		return reiniciaFase();
 	}
 	if(p2)
 	{
 		if(p2->getVida() == false || p2->getPosicao().y > 1500.f)
 		{
-			gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
+			gerenciador_grafico_Fase->mostrarTexto("Perdeu ! ! !");
 			return reiniciaFase();
 		}
 	}
-	if (gerenciador_comandos_fase_teste->comandosFuncionalidades() == GerenciadorComandos::Comandos::comeco)
+	if (gerenciador_comandos_Fase->comandosFuncionalidades() == GerenciadorComandos::Comandos::comeco)
 	{
 		return IdsMenu::menu_abre;
 	}
 	return IdsMenu::fase_continua;
 }
 
-void Fase_teste::adicionar(Entidade* e)
+void Fase::adicionar(Entidade* e)
 {
 	ListaEntidades.inserir(e);
-	gerenciador_colisoes_fase_teste->adicionarEntidade(e);
+	gerenciador_colisoes_Fase->adicionarEntidade(e);
 }
 
 
-void Fase_teste::inicializarTextura(Entidade* e)
+void Fase::inicializarTextura(Entidade* e)
 {
-	e->inicializarTextura(gerenciador_grafico_fase_teste);
+	e->inicializarTextura(gerenciador_grafico_Fase);
 }
 
 
-void Fase_teste::remover(Entidade* e)
+void Fase::remover(Entidade* e)
 {
-	gerenciador_colisoes_fase_teste->removerEntidade(e);
+	gerenciador_colisoes_Fase->removerEntidade(e);
 	ListaEntidades.removerEntidades(e);
 }
 
-GerenciadorGrafico* Fase_teste::getGerenciadorGrafico()
+GerenciadorGrafico* Fase::getGerenciadorGrafico()
 {
-	return gerenciador_grafico_fase_teste;
+	return gerenciador_grafico_Fase;
 }
 
-void Fase_teste::verificarInimigos()
+void Fase::verificarInimigos()
 {
 	std::set<Inimigo*>::iterator itr1;
 	std::list<Inimigo*> mortos;
@@ -202,32 +204,32 @@ void Fase_teste::verificarInimigos()
 		std::cout << *itr2 << " . " <<std::endl;
 	}
 	*/
-/*}
+}
 
-void Fase_teste::adicionarInimigo(Inimigo* ini)
+void Fase::adicionarInimigo(Inimigo* ini)
 {
 	adicionar(static_cast<Entidade*>(ini));
 	inimigos.insert(ini);
 }
 
-int Fase_teste::reiniciaFase()
+int Fase::reiniciaFase()
 {
 	return IdsMenu::fase0_abre;
 }
 
-int Fase_teste::proximaFase()
+int Fase::proximaFase()
 {
 	return IdsMenu::fase1_abre;
 }
 
-void Fase_teste::limpar()
+void Fase::limpar()
 {
-	gerenciador_grafico_fase_teste->limpar(0x62, 0x3e, 0x26);
+	gerenciador_grafico_Fase->limpar(0x62, 0x3e, 0x26);
 }
 
-void Fase_teste::gerenciarP2(GerenciadorGrafico* gg)
+void Fase::gerenciarP2(GerenciadorGrafico* gg)
 {
-	unsigned int pressionados = gerenciador_comandos_fase_teste->comandosBolas();
+	unsigned int pressionados = gerenciador_comandos_Fase->comandosBolas();
 	if (!p2)
 	{
 
@@ -235,7 +237,7 @@ void Fase_teste::gerenciarP2(GerenciadorGrafico* gg)
 		{
 			p2 = new Russia(j->getPosicao(), "Russia_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f));
 			ListaEntidades.inserir(static_cast<Entidade*>(p2));
-			gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(p2));
+			gerenciador_colisoes_Fase->adicionarEntidade(static_cast<Entidade*>(p2));
 			p2->setFase(this);
 			p2->inicializarTextura(gg);
 
@@ -247,4 +249,4 @@ void Fase_teste::gerenciarP2(GerenciadorGrafico* gg)
 		delete p2;
 		p2 = nullptr;
 	}
-}*/
+}

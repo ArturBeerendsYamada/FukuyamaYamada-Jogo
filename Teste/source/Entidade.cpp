@@ -26,3 +26,8 @@ int Entidade::getIdColisao() const
 {
 	return idColisao;
 }
+
+const char* Entidade::getTextura()
+{
+	return textura;
+} 

@@ -1,5 +1,5 @@
 #include "../lib/Japao.h"
-#include "../lib/Fase_teste.h"
+#include "../lib/Fase.h"
 #include <iostream>
 
 Japao::Japao(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel):
@@ -53,6 +53,6 @@ void Japao::atirar()
     pode_atirar = false;
 }
 
-void Japao::setFase(Fase_teste* Fase){
+void Japao::setFase(Fase* Fase){
 	fase = Fase;
 }

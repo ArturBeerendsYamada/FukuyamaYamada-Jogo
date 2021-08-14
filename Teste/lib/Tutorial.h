@@ -2,14 +2,15 @@
 
 #include "Fase.h"
 
-class Floresta : public Fase
+class Tutorial : public Fase
 {
 private:
 	int reiniciaFase();
 	int proximaFase();
 	void limpar();
+
 public:
-	Floresta();
-	~Floresta();
+	Tutorial();
+	~Tutorial();
 	void inicializar(GerenciadorGrafico* gg);
 };

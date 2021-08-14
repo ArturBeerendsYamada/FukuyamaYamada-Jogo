@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Fase_teste.h"
+#include "Fase.h"
 
-class Praia : public Fase_teste
+class Praia : public Fase
 {
 private:
 	int reiniciaFase();
@@ -10,5 +10,7 @@ private:
 	void limpar();
 
 public:
+	Praia();
+	~Praia();
 	void inicializar(GerenciadorGrafico* gg);
 };

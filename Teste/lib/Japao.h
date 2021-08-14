@@ -3,12 +3,12 @@
 #include "Inimigo.h"
 #include "ProjetilInimigo.h"
 
-class Fase_teste;
+class Fase;
 
 class Japao: public Inimigo
 {
 private:
-    Fase_teste* fase;
+    Fase* fase;
     ProjetilInimigo* tiroinimigo;
     bool pode_atirar;
     int direcao_projetil;
@@ -20,5 +20,5 @@ public:
 
     void atualizar(float deltaT);
     void atirar();
-    void setFase(Fase_teste* Fase);
+    void setFase(Fase* Fase);
 };

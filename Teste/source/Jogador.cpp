@@ -1,6 +1,6 @@
 #include "../lib/Jogador.h"
 #include "../lib/ProjetilAmigo.h"
-#include "../lib/Fase_teste.h"
+#include "../lib/Fase.h"
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -184,6 +184,6 @@ void Jogador::atirar()
 	pode_atirar=false;
 }
 
-void Jogador::setFase(Fase_teste* Fase){
+void Jogador::setFase(Fase* Fase){
 	fase = Fase;
 }

@@ -1,13 +1,19 @@
 #include "../lib/Praia.h"
 
+Praia::Praia():
+Fase()
+{}
+
+Praia::~Praia(){
+}
 
 
 void Praia::inicializar(GerenciadorGrafico* gg)
 {
 	gg->inicializarBackground("Praia.png", Vetor2F(6000.0f, 1000.0f));
-	gerenciador_grafico_fase_teste = gg;
-	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
-	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
+	gerenciador_grafico_Fase = gg;
+	gerenciador_comandos_Fase = GerenciadorComandos::getComandos();
+	gerenciador_colisoes_Fase = new GerenciadorColisoes;
 
 
 
@@ -148,7 +154,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 
 	j = (new Brasil(Vetor2F(TILE, 6*TILE), "Brasil_Countryball.png", Vetor2F(100.0f, 100.0f), Vetor2F(0.f, 0.f)));
 	ListaEntidades.inserir(static_cast<Entidade*>(j));
-	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
+	gerenciador_colisoes_Fase->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
 
 	al = new Alemanha(Vetor2F(-800.0f, 500.0f ), "Alemanha_Countryball.png", Vetor2F(6*TILE, 6*TILE), Vetor2F(100.f, 0.f));
@@ -168,7 +174,7 @@ int Praia::reiniciaFase()
 
 void Praia::limpar()
 {
-	gerenciador_grafico_fase_teste->limpar(0xd3, 0xed, 0xee);
+	gerenciador_grafico_Fase->limpar(0xd3, 0xed, 0xee);
 }
 
 int Praia::proximaFase()

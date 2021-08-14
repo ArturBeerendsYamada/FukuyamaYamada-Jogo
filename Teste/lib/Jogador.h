@@ -3,9 +3,9 @@
 #include "GerenciadorComandos.h"
 #include "Personagem.h"
 #include "ProjetilAmigo.h"
-//#include "Fase_teste.h"
+//#include "Fase.h"
 
-class Fase_teste;
+class Fase;
 
 class Jogador : public Personagem
 {
@@ -14,7 +14,7 @@ protected:
 	bool pode_pular;
 	bool pode_atirar;
 	int direcao_projetil;
-	Fase_teste* fase;
+	Fase* fase;
 	ProjetilAmigo* tiroamigo;
 	float tzinho;
 
@@ -29,5 +29,5 @@ public:
 	virtual void atualizar(float deltaT) = 0;
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
 	virtual void atirar();
-	virtual void setFase(Fase_teste* fase);
+	virtual void setFase(Fase* fase);
 };
