@@ -23,8 +23,7 @@ Fase_teste::~Fase_teste()
 
 void Fase_teste::inicializar(GerenciadorGrafico* gg)
 {
-	//gg->inicializarBackground("Floresta.jpg", Vetor2F(2000.0f, 700.0f));
-	printf("oi");
+	gg->inicializarBackground("Invisivel.png", Vetor2F(2000.0f, 700.0f));
 	gerenciador_grafico_fase_teste = gg;
 	gerenciador_comandos_fase_teste = GerenciadorComandos::getComandos();
 	gerenciador_colisoes_fase_teste = new GerenciadorColisoes;
@@ -49,7 +48,7 @@ void Fase_teste::inicializar(GerenciadorGrafico* gg)
 			switch (matriz[i][k])
 			{
 				case 1:
-					temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(k * TILE, i * TILE), "Bloco.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(k * TILE, i * TILE), "Bloco_Tijolo.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionar(temp);
 					break;
 
@@ -126,19 +125,28 @@ int Fase_teste::executar(GerenciadorGrafico* gg)
 		gg->desenharBackground();
 		ListaEntidades.desenharEntidades(*gg);
 		gg->mostrar();
+		gg->mostrar();
 		gerenciador_grafico_fase_teste->mostrarTexto("Venceu ! ! !");
-		return IdsMenu::fase1_abre;
+		return proximaFase();
 	}
 	if (j->getVida() == false || j->getPosicao().y > 1500.f)
 	{
 		//j->setVida(true);
 		//j->setPosicao(Vetor2F(0.0f, 1000.0f));
-		printf("kiche");
+		//printf("kiche");
 		gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
 		return reiniciaFase();
 	}
+	if(p2)
+	{
+		if(p2->getVida() == false || p2->getPosicao().y > 1500.f)
+		{
+			gerenciador_grafico_fase_teste->mostrarTexto("Perdeu ! ! !");
+			return reiniciaFase();
+		}
+	}
 	if (gerenciador_comandos_fase_teste->comandosFuncionalidades() == GerenciadorComandos::Comandos::comeco)
-	{	
+	{
 		return IdsMenu::menu_abre;
 	}
 	return IdsMenu::fase_continua;
@@ -208,6 +216,11 @@ int Fase_teste::reiniciaFase()
 	return IdsMenu::fase0_abre;
 }
 
+int Fase_teste::proximaFase()
+{
+	return IdsMenu::fase1_abre;
+}
+
 void Fase_teste::limpar()
 {
 	gerenciador_grafico_fase_teste->limpar(0x62, 0x3e, 0x26);
@@ -228,7 +241,7 @@ void Fase_teste::gerenciarP2(GerenciadorGrafico* gg)
 			gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(p2));
 			p2->setFase(this);
 			p2->inicializarTextura(gg);
-	
+
 		}
 	}
 	else if (((pressionados >> GerenciadorComandos::remover2)%2))

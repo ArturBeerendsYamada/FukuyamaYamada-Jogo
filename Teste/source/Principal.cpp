@@ -40,7 +40,6 @@ void Principal::executar()
 		}
 
         if(controle == IdsMenu::menu_abre){
-            printf("Opa");
             menu_inicial->inicializar(gg);
 
             controle = IdsMenu::menu_continua;
@@ -50,7 +49,6 @@ void Principal::executar()
             controle = menu_inicial->executar(gg);
         }
         if(controle == IdsMenu::ranking){
-        printf("ola");
             menu_inicial->mostrar_ranking(gg);
             controle = IdsMenu::menu_continua;
         }
@@ -63,15 +61,11 @@ void Principal::executar()
         }
 
         if(controle == IdsMenu::fase0_abre){
-            printf("1");
             if(fase)
                 delete fase;
-            printf("2");
             fase = NULL;
             fase = new Fase_teste;
-            printf("3");
             fase->inicializar(gg);
-            printf("4");
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase1_abre){

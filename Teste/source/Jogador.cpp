@@ -44,6 +44,7 @@ void Jogador::desenhar(GerenciadorGrafico& g)
 
 void Jogador::atualizar(float deltaT)
 {
+	deltaT = deltaT;
 /*	tzinho = deltaT;
 	velocidade.x = 0.0f;
 	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();

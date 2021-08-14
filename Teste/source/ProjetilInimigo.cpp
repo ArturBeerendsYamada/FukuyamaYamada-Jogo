@@ -3,7 +3,7 @@ ProjetilInimigo::ProjetilInimigo(const Vetor2F pos, const char *caminho, const V
 Projetil(pos, caminho, tam, vel, Existe)
 {
     idColisao = IdsColisao::projetilInimigo;
-    alcance = 500;
+    alcance = 1000;
 }
 
 ProjetilInimigo::~ProjetilInimigo()

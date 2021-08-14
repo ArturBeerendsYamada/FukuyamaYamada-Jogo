@@ -63,7 +63,8 @@ void Menu::inicializar(GerenciadorGrafico *gg)
 	info.setCharacterSize(SEL_TAM_FONT/4);
 	info.setFillColor(sf::Color::Black);
 	info.setString("Para navegar pelo menu, use as setas do teclado. Para selecionar uma opcao, aperte Enter\n\n"
-	"Dentro do jogo, utilize as teclas 'A', 'D' e 'W' para se movimentar, e a tecla 'S' para lancar um projetil");
+	"Dentro do jogo, utilize as teclas 'A', 'D' e 'W' para se movimentar, e a tecla 'S' para lancar um projetil\n"
+	"Para adicionar outro jogador, aperte 'M', para retirar, 'N'. O segundo jogador e controlado pelas setas");
 	info.setPosition(sf::Vector2f(10.f, 6.f));
 }
 

@@ -18,18 +18,80 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 
 	srand(time(NULL));
 
+	//gera alguns inimigos normais aleatorios
+	float pos_x = 26*TILE, pos_y = 8*TILE;
+	int n = rand()%3+2;
+	do{
+		pos_y = (float)((rand()%1600)-800);
+		ini = (new Italia(Vetor2F(pos_x, pos_y), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.0f, 0.0f)));
+		adicionarInimigo(ini);
+		pos_x = (26+(rand()%2))*TILE;
+		n--;
+	}while(n);
+
+	//gera algumas minas aleatorias
+	pos_x = 10*TILE;
+	pos_y = 8*TILE+TILE/2;
+	do{
+		temp = static_cast<Entidade*>(new Mina(Vetor2F(pos_x, pos_y), "Mina.png", Vetor2F(TILE/2, TILE/2), Vetor2F(0.0f, 0.0f)));
+		adicionar(temp);
+		pos_x += (float)(rand()%300)+150;
+	}while(pos_x<18*TILE);
+
+	pos_x = 38*TILE;
+	pos_y = 4*TILE+TILE/2;
+	do{
+		temp = static_cast<Entidade*>(new Mina(Vetor2F(pos_x, pos_y), "Mina.png", Vetor2F(TILE/2, TILE/2), Vetor2F(0.0f, 0.0f)));
+		adicionar(temp);
+		pos_x += (float)(rand()%200);
+	}while(pos_x<43*TILE);
+
+	pos_x = 19*TILE;
+	pos_y = 8*TILE;
+	jap = (new Japao(-1, Vetor2F(pos_x, pos_y), "Japan_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+	adicionarInimigo(static_cast<Inimigo*>(jap));
+	jap->setFase(this);
+	n--;
+	//gera alguns inimigos de projetil aleatorios
+	pos_x = 43*TILE;
+	pos_y = 4*TILE;
+	do{
+		jap = (new Japao(-1, Vetor2F(pos_x, pos_y), "Japan_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+		adicionarInimigo(static_cast<Inimigo*>(jap));
+		jap->setFase(this);
+		pos_x += (float)(rand()%300);
+	}while(pos_x<52*TILE);
+
+	//gera alguns arames farpados aleatorios
+	pos_x = 23*TILE;
+	pos_y = (rand()%2+1)*TILE;
+	do{
+		temp = static_cast<Entidade*>(new ArameFarpado(Vetor2F(pos_x, pos_y), "ArameFarpado.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+		adicionar(temp);
+		pos_y += 300.0f;
+	}while(pos_y<9*TILE);
+
+	pos_x = 46*TILE;
+	pos_y = 8*TILE;
+	do{
+		temp = static_cast<Entidade*>(new ArameFarpado(Vetor2F(pos_x, pos_y), "ArameFarpado.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+		adicionar(temp);
+		pos_x += 300.0f+rand()%100;
+	}while(pos_x<54*TILE);
+
+
 	int i, k;
 	int matriz[10][60] = {
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1 },
+		{ 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+		{ 0, 0, 1, 1, 1, 0, 6, 0, 1, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 2, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 5, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 	};//  0				 5				10			   15			  20			 25			    30			   35			  40			 45			 	50			   55
 	for (i = 0; i < 10; i++)
 	{
@@ -38,7 +100,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 			switch (matriz[i][k])
 			{
 				case 1:
-					temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(k * TILE, i * TILE), "Bloco.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					temp = static_cast<Entidade*>(new Obstaculo(Vetor2F(k * TILE, i * TILE), "Bloco_Praia.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionar(temp);
 					break;
 
@@ -63,7 +125,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 6:
-					ini = (new Inimigo(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					ini = (new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(ini);
 					break;
 
@@ -89,7 +151,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 	gerenciador_colisoes_fase_teste->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
 
-	al = new Alemanha(Vetor2F(-800.0f, 1000.0f ), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f));
+	al = new Alemanha(Vetor2F(-800.0f, 500.0f ), "Alemanha_Countryball.png", Vetor2F(6*TILE, 6*TILE), Vetor2F(100.f, 0.f));
     adicionarInimigo(static_cast<Inimigo*>(al));
 
     bot->setAlemanha(al);
@@ -107,4 +169,9 @@ int Praia::reiniciaFase()
 void Praia::limpar()
 {
 	gerenciador_grafico_fase_teste->limpar(0xd3, 0xed, 0xee);
+}
+
+int Praia::proximaFase()
+{
+	return IdsMenu::menu_abre;
 }

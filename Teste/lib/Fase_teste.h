@@ -33,6 +33,7 @@ protected:
 	Russia* p2;
 	Alemanha* al;
 	virtual int reiniciaFase();
+	virtual int proximaFase();
 	virtual void limpar();
 
 public:

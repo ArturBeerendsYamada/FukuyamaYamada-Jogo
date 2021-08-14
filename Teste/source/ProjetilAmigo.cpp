@@ -17,7 +17,7 @@ void ProjetilAmigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, fl
 	outro = outro;
 	interY = interY;
 	interX = interX;
-    if(outro->getIdColisao() != IdsColisao::jogador && outro->getIdColisao() != IdsColisao::projetilInimigo && outro->getIdColisao() != IdsColisao::arame_farpado)
+    if(outro->getIdColisao() != IdsColisao::jogador && outro->getIdColisao() != IdsColisao::arame_farpado)
     {
         this->setExiste(false);
     }

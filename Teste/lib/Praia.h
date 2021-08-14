@@ -6,6 +6,7 @@ class Praia : public Fase_teste
 {
 private:
 	int reiniciaFase();
+	int proximaFase();
 	void limpar();
 
 public:
