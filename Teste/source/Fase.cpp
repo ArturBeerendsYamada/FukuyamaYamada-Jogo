@@ -119,22 +119,7 @@ void Fase::adicionarInimigo(Inimigo* ini)
 	adicionar(static_cast<Entidade*>(ini));
 	inimigos.insert(ini);
 }
-/*
-int Fase::reiniciaFase()
-{
-	return IdsMenu::fase0_abre;
-}
 
-int Fase::proximaFase()
-{
-	return IdsMenu::fase1_abre;
-}
-
-void Fase::limpar()
-{
-	gerenciador_grafico_Fase->limpar(0x62, 0x3e, 0x26);
-}
-*/
 void Fase::gerenciarP2(GerenciadorGrafico* gg)
 {
 	unsigned int pressionados = gerenciador_comandos_Fase->comandosBolas();

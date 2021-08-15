@@ -11,5 +11,4 @@ public:
 	virtual void atualizar(float deltaT);
 
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
-
 };

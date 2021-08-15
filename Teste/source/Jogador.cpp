@@ -34,66 +34,6 @@ bool Jogador::getPular()
 	return pode_pular;
 }
 
-/*
-void Jogador::desenhar(GerenciadorGrafico& g)
-{
-	g.desenhar(textura, posicao, tamanho);
-	g.centralizar(posicao);
-}
-*/
-/*
-void Jogador::atualizar(float deltaT)
-{
-	deltaT = deltaT;
-	tzinho = deltaT;
-	velocidade.x = 0.0f;
-	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();
-	if (((pressionados >> GerenciadorComandos::esquerda1) % 2) == 1) //verifica se o bit relativo ao comando estah setado
-	{
-		//if(tiroamigo)
-		//	tiroamigo->setFrente(false);
-		velocidade.x -= ACCEL;
-		direcao_projetil = -1;
-	}
-	if (((pressionados >> GerenciadorComandos::direita1) % 2))
-	{
-		//if(tiroamigo)
-		//	tiroamigo->setFrente(true);
-		velocidade.x += ACCEL;
-		direcao_projetil = 1;
-	}
-	if (((pressionados >> GerenciadorComandos::pular1) % 2) && pode_pular)
-	{
-		pode_pular = false;
-		velocidade.y = -sqrtf(2.0 * GRAV * PULO);
-	}
-	velocidade.y += GRAV * deltaT;
-
-	//if (((pressionados >> GerenciadorComandos::atirar1) % 2))
-	//{
-	//	velocidade.y += ACCEL * deltaT;
-	//}
-	this->mover(velocidade * deltaT);
-
-	if(((pressionados >> GerenciadorComandos::atirar1)%2) && pode_atirar)
-	{
-		atirar();
-	}
-	if(tiroamigo){
-		if(!pode_atirar)
-		{
-			if(!tiroamigo->getExiste() || abs(tiroamigo->getPosicao().x - getPosicao().x) >= tiroamigo->getAlcance())
-			{
-				fase->remover(tiroamigo);
-				delete tiroamigo;
-				tiroamigo = NULL;
-				pode_atirar = true;
-			}
-		}
-	}
-}
-*/
-
 void Jogador::naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY)
 {
 	if (outro->getIdColisao() == IdsColisao::solido)

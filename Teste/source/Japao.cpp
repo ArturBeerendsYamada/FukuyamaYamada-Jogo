@@ -21,8 +21,7 @@ Inimigo(pos, caminhoTextura, tam, vel)
 }
 
 Japao::~Japao(){
- //   fase->remover(tiroinimigo);
-//    delete tiroinimigo;
+
 }
 
 void Japao::atualizar(float deltaT)
@@ -64,7 +63,6 @@ void Japao::naColisao(Vetor2F direcao, Entidade* outro, float interX, float inte
 		if (direcao == ABAIXO)
 		{
 			this->mover(Vetor2F(0.0f, interY));
-			//pode_pular = true;
 			velocidade.y = 0.0f;
 		}
 		else if (direcao == ACIMA)
@@ -85,7 +83,6 @@ void Japao::naColisao(Vetor2F direcao, Entidade* outro, float interX, float inte
 	{
 		if (direcao == ABAIXO)
 		{
-			//pode_pular = true;
 			velocidade.y = 0;
 		}
 	}

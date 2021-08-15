@@ -25,7 +25,6 @@ public:
 	void setPular(const bool p);
 	bool getPular();
 
-//	virtual void atualizar(float deltaT) = 0;
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
 	void atirar();
 	void setFase(Fase* fase);
