@@ -41,9 +41,6 @@ void BotaoBombas::naColisao(Vetor2F direcao, Entidade* outro, float interX, floa
 	}
 }
 
-void BotaoBombas::inicializar(){
-
-}
 void BotaoBombas::atualizar(float deltaT){
     deltaT = deltaT;
 }

@@ -22,15 +22,11 @@ void Russia::atualizar(float deltaT)
 	unsigned int pressionados = gerenciador_comandos_jogador->comandosBolas();
 	if (((pressionados >> GerenciadorComandos::esquerda2) % 2) == 1) //verifica se o bit relativo ao comando estah setado
 	{
-		//if(tiroamigo)
-		//	tiroamigo->setFrente(false);
 		velocidade.x -= ACCEL;
 		direcao_projetil = -1;
 	}
 	if (((pressionados >> GerenciadorComandos::direita2) % 2))
 	{
-		//if(tiroamigo)
-		//	tiroamigo->setFrente(true);
 		velocidade.x += ACCEL;
 		direcao_projetil = 1;
 	}
@@ -41,10 +37,6 @@ void Russia::atualizar(float deltaT)
 	}
 	velocidade.y += GRAV * deltaT;
 
-	//if (((pressionados >> GerenciadorComandos::atirar1) % 2))
-	//{
-	//	velocidade.y += ACCEL * deltaT;
-	//}
 	this->mover(velocidade * deltaT);
 
 	if(((pressionados >> GerenciadorComandos::atirar2)%2) && pode_atirar)

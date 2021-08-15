@@ -177,10 +177,7 @@ void Jogador::atirar()
 
 	tiroamigo = new ProjetilAmigo(Vetor2F(posicao.x, posicao.y), "projetilAmigo.png", Vetor2F(20.0f, 20.0f), velocidade_projetil, true);
 	fase->adicionar(static_cast<Entidade*>(tiroamigo));
-	//tiroamigo->inicializarTextura(fase->getGerenciadorGrafico());
 	fase->inicializarTextura(static_cast<Entidade*>(tiroamigo));
-	tiroamigo->inicializar();
-	//fase->inicializarTextura(tiroamigo);
 	pode_atirar=false;
 }
 

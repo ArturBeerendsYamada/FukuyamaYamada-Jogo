@@ -11,10 +11,6 @@ Personagem::~Personagem()
 {
 }
 
-void Personagem::inicializar()
-{
-}
-
 void Personagem::atualizar(float deltaT)
 {
 	posicao += velocidade * deltaT;

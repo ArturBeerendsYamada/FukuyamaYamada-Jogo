@@ -13,5 +13,4 @@ public:
     float getAlcance() const {return alcance;}
 
     void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
-    void inicializar();
 };

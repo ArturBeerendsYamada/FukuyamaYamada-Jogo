@@ -7,7 +7,7 @@ using namespace std;
 
 #define LARGURA 800
 #define ALTURA 600
-#define N_ITENS 6
+#define N_ITENS 5
 #define SEL_TAM_FONT 48
 
 #define BEGE 0xda, 0xc8, 0xb3
@@ -31,6 +31,5 @@ public:
 	void inicializar(GerenciadorGrafico* gg);
 	int executar(GerenciadorGrafico* gg);
 
-	void mostrar_ranking(GerenciadorGrafico* gg);
 	void mostrar_creditos(GerenciadorGrafico* gg);
 };

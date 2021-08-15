@@ -44,18 +44,13 @@ void Menu::inicializar(GerenciadorGrafico *gg)
 
 	indices_itens_menu[3].setFont(font);
 	indices_itens_menu[3].setFillColor(sf::Color::Black);
-	indices_itens_menu[3].setString("Rankings");
+	indices_itens_menu[3].setString("Creditos");
 	indices_itens_menu[3].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 4));
 
 	indices_itens_menu[4].setFont(font);
 	indices_itens_menu[4].setFillColor(sf::Color::Black);
-	indices_itens_menu[4].setString("Creditos");
+	indices_itens_menu[4].setString("Sair");
 	indices_itens_menu[4].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 5));
-
-	indices_itens_menu[5].setFont(font);
-	indices_itens_menu[5].setFillColor(sf::Color::Black);
-	indices_itens_menu[5].setString("Sair");
-	indices_itens_menu[5].setPosition(sf::Vector2f(LARGURA / 6, ALTURA / (N_ITENS + 1) * 6));
 
 	opcao_atual = 0;
 
@@ -93,9 +88,6 @@ int Menu::executar(GerenciadorGrafico *gg)
 					return IdsMenu::fase2_abre;
 
 				case 3:
-					return IdsMenu::ranking;
-
-				case 4:
 					return IdsMenu::creditos;
 
 				default:
@@ -145,33 +137,6 @@ void Menu::opcao_abaixo()
 		indices_itens_menu[opcao_atual].setFillColor(sf::Color::Red);
 		indices_itens_menu[opcao_atual].setStyle(1);
 		indices_itens_menu[opcao_atual].setCharacterSize(SEL_TAM_FONT);
-	}
-}
-
-void Menu::mostrar_ranking(GerenciadorGrafico *gg)
-{
-	gg->getJanela()->clear(sf::Color(BEGE));
-	sf::Text em_breve;
-	em_breve.setFont(font);
-	em_breve.setFillColor(sf::Color::Red);
-	em_breve.setString("\n\tnao implementado :(\n\n");
-	gg->getJanela()->draw(em_breve);
-	gg->getJanela()->display();
-
-	while(gg->getJanela()->isOpen())
-	{
-		sf::Event event;
-		while(gg->getJanela()->pollEvent(event))
-		{
-			if(gc->comandosMenu()!=GerenciadorComandos::Comandos::nulo)
-			{
-				return;
-			}
-			else if(event.type == sf::Event::Closed)
-			{
-				exit(0);
-			}
-		}
 	}
 }
 

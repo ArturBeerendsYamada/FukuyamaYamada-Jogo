@@ -25,7 +25,6 @@ public:
 	virtual void setPular(const bool p);
 	virtual bool getPular();
 
-	//virtual void desenhar(GerenciadorGrafico& g);
 	virtual void atualizar(float deltaT) = 0;
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
 	virtual void atirar();

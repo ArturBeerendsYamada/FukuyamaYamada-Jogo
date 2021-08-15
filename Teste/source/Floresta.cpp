@@ -48,7 +48,7 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 		adicionar(temp);
 		pos_y -= (rand()%100)+100;
 	}while(pos_y>0);
-
+	
 	int i, k;
 	int matriz[10][60] = {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -93,11 +93,12 @@ void Floresta::inicializar(GerenciadorGrafico* gg)
 					adicionar(static_cast<Entidade*>(bot));
 					break;
 
+				
 				case 6:
 					ini = (new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(ini);
 					break;
-
+				
 				case 7:
 					jap = (new Japao(Vetor2F(k * TILE, i * TILE), "Japan_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(static_cast<Inimigo*>(jap));

@@ -14,20 +14,9 @@ Inimigo::~Inimigo()
 {
 }
 
-void Inimigo::inicializar()
-{
-}
 void Inimigo::atualizar(float deltaT)
 {
-	/*velocidade.y += GRAV * deltaT;
-	if (pode_pular)
-	{
-		pode_pular = false;
-		velocidade.y = -sqrtf(2.0 * GRAV * PULO);
-	}*/
 	mover(velocidade * deltaT);
-
-
 }
 
 

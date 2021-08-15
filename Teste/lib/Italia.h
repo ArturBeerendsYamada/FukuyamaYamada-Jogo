@@ -8,8 +8,6 @@ class Fase;
 class Italia: public Inimigo
 {
 private:
-    //Fase* fase;
-    ProjetilInimigo* tiroinimigo;
     bool pode_pular;
 
 public:

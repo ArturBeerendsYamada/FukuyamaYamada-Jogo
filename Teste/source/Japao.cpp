@@ -21,8 +21,8 @@ Inimigo(pos, caminhoTextura, tam, vel)
 }
 
 Japao::~Japao(){
-    fase->remover(tiroinimigo);
-    delete tiroinimigo;
+ //   fase->remover(tiroinimigo);
+//    delete tiroinimigo;
 }
 
 void Japao::atualizar(float deltaT)

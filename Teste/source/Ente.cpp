@@ -14,6 +14,4 @@ Vetor2F Ente::getTamanho() const {return tamanho;}
 void Ente::desenhar(GerenciadorGrafico& g) {g.desenhar(textura, posicao, tamanho);}
 //nao devia ser virtual?
 void Ente::inicializarTextura(GerenciadorGrafico* g) {
-	if(!g)
-		printf("Gerenciar Textura\n");
 	g->carregarTextura(textura);}

@@ -21,6 +21,3 @@ void ProjetilInimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, 
     }
 }
 
-void ProjetilInimigo::inicializar(){
-
-}

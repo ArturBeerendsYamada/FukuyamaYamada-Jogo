@@ -8,7 +8,6 @@ Entidade(pos, caminho, tam, vel)
 	idColisao = IdsColisao::nulo;
     existe = existir;
 	alcance = 300;
-	//frente = true;
 }
 
 Projetil::~Projetil()
@@ -28,11 +27,4 @@ void Projetil::setExiste(const bool existir)
 void Projetil::atualizar(float deltaT)
 {
 	posicao.x += velocidade.x * deltaT;
-	//std::cout << textura << std::endl;
-	//std::cout << velocidade.x << " " << velocidade.y << std::endl;
-	//std::cout << tamanho.x << " " << tamanho.y << std::endl;
 }
-
-/*void Projetil::setFrente(bool direcao){
-	frente = direcao;
-}*/

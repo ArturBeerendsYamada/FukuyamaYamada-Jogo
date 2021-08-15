@@ -29,14 +29,6 @@ GerenciadorComandos::Comandos  GerenciadorComandos::comandosFuncionalidades()
 	{
 		return comeco;
 	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M))
-	{
-		return adicionar2;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::N))
-	{
-		return remover2;
-	}*/
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::P))
 	{
 		return pausar;
@@ -101,40 +93,6 @@ unsigned int GerenciadorComandos::comandosBolas()
 		pressionados += 1 << remover2;
 	}
 	return pressionados;
-	/*
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
-	{
-		return esquerda1;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-	{
-		return direita1;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
-	{
-		return pular1;
-	}
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
-	{
-		return atirar1;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-	{
-		return esquerda2;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-	{
-		return direita2;
-	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-	{
-		return pular2;
-	}
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-	{
-		return atirar2;
-	}
-	return nulo;*/
 }
 
 int  GerenciadorComandos::comandosMenu()

@@ -77,7 +77,6 @@ bool GerenciadorGrafico::carregarTextura(const std::string& caminho)
 
 void GerenciadorGrafico::centralizar(const Vetor2F centro)
 {
-	//camera.setCenter(centro.x, centro.y);
 	camera.setCenter(centro.x, min(centro.y, 580.f));
 	janela->setView(camera);
 }
@@ -101,7 +100,6 @@ void GerenciadorGrafico::inicializarBackground(const std::string& caminho, Vetor
 
 	background.setTextureRect(sf::IntRect(0, 0, tamanho.x*2, background_textura.getSize().y));
 	background.setTexture(background_textura);
-	//background.setOrigin(background_textura.getSize().x, background_textura.getSize().y/2);
 	background.setPosition(-2000, 100);
 	background.setScale(1, 1.2);
 

@@ -28,23 +28,9 @@ void Alemanha::naColisao(Vetor2F direcao, Entidade* outro, float interX, float i
 	outro = outro;
 	interX = interX;
 	interY = interY;
-	/*if (outro->getIdColisao() == IdsColisao::solido)
-	{
-		if (direcao == ABAIXO)
-		{
-			this->mover(Vetor2F(0.0f, interY));
-        }
-	}*/
 }
 
-/*void Alemanha::setBotao(BotaoBombas* Botao){
-    botao = Botao;
-}*/
 
 void Alemanha::setFase(Fase* Fase){
     fase = Fase;
 }
-
-/*void Alemanha::setVida(BotaoBombas* Botao){
-	vida = Botao->getExiste();
-}*/

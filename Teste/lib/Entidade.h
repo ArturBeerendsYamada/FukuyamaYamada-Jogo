@@ -27,7 +27,6 @@ public:
 		return vida;
 	}
 
-	virtual void inicializar() = 0;
 	virtual void atualizar(float deltaT) = 0;
 
 	void mover(Vetor2F deslocamento);

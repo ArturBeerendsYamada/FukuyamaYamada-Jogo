@@ -23,6 +23,3 @@ void ProjetilAmigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, fl
     }
 }
 
-void ProjetilAmigo::inicializar(){
-
-}

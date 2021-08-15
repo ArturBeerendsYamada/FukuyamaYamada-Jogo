@@ -8,7 +8,6 @@
 Italia::Italia(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vetor2F vel):
 Inimigo(pos, caminhoTextura, tam, vel)
 {
-    tiroinimigo = NULL;
     pode_pular = true;
     idColisao = IdsColisao::inimigo;
 }

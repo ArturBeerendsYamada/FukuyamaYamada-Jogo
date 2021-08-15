@@ -25,7 +25,6 @@ void ListaEntidade::inicializarEntidades(GerenciadorGrafico &g)
 	while (p)
 	{
 		p->inicializarTextura(&g);
-		p->inicializar();
 		p = lista.irProximo();
 	}
 }
@@ -57,30 +56,12 @@ void ListaEntidade::destruirEntidades()
 {
 	Entidade* p = lista.voltarInicio();
 
-	/*std::vector<Entidade*> v;
-
-	while(p)
-	{
-		v.push_back(p);
-		p = lista.irProximo();
-	}
-		for (std::size_t i = 0; i < v.size(); ++i) {
-		for (std::size_t j = i + 1; j < v.size(); ++j) {
-			if (v[i] == v[j]) printf("REPETIU!!!");
-		}
-    }
-	*/
 	p = lista.voltarInicio();
 
 	while (p)
 	{
-		//printf("%d\n", p);
-		//printf("%d\n", p->getIdColisao());
-		std::cout << p->getTextura() <<std::endl;
 		delete p;
-		//printf("OLS\n");
         p = lista.irProximo();
-		//printf("OL\n");
 	}
 
 	lista.esvaziar();

@@ -4,15 +4,11 @@
 #define HEIGHT 600
 
 Principal::Principal() :
-	/*menu_inicial(nullptr),*/
-	fase(nullptr) //:
-//janela{new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "TheBallGame")}
-//amigo(WIDTH/2, HEIGHT/2, "Brasil_Countryball.png")
+	fase(nullptr) 
 {
     menu_inicial = new Menu;
     fase = NULL;
 	gg = new GerenciadorGrafico;
-	//janela->setPosition({0, 0});
 }
 
 Principal::~Principal()
@@ -43,14 +39,9 @@ void Principal::executar()
             menu_inicial->inicializar(gg);
 
             controle = IdsMenu::menu_continua;
-            //printf("%f %f\n", gg->getJanela()->getView().getCenter().x,  gg->getJanela()->getView().getCenter().y);
         }
         if(controle == IdsMenu::menu_continua){
             controle = menu_inicial->executar(gg);
-        }
-        if(controle == IdsMenu::ranking){
-            menu_inicial->mostrar_ranking(gg);
-            controle = IdsMenu::menu_continua;
         }
         if(controle == IdsMenu::creditos){
             menu_inicial->mostrar_creditos(gg);
@@ -61,25 +52,23 @@ void Principal::executar()
         }
 
         if(controle == IdsMenu::fase0_abre){
-        //    if(fase)
-        //        delete fase;
+            if(fase)
+                delete fase;
             fase = NULL;
             fase = new Tutorial();
             fase->inicializar(gg);
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase1_abre){
-
-         //   if(fase)
-         //       delete fase;
+            if(fase)
+                delete fase;
             fase = NULL;
             fase = new Floresta();
-            	printf("fase1princ\n");
             fase->inicializar(gg);
             controle = fase_continua;
         }
         if(controle == IdsMenu::fase2_abre){
-            //delete fase;
+            delete fase;
             fase = new Praia;
             fase->inicializar(gg);
             controle = fase_continua;
@@ -88,5 +77,4 @@ void Principal::executar()
             controle = fase->executar(gg);
         }
     }
-    //exit(0);
 }

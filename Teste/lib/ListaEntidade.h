@@ -11,7 +11,6 @@ public:
 	~ListaEntidade();
 
 	void inserir(Entidade* info);
-	//void esvaziar();
 
 	void inicializarEntidades(GerenciadorGrafico &g);
 	void atualizarEntidades(float t);
