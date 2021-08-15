@@ -21,4 +21,5 @@ public:
     void atualizar(float deltaT);
     void atirar();
     void setFase(Fase* Fase);
+    virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
 };

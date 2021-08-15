@@ -32,21 +32,21 @@ protected:
 	Brasil* j;
 	Russia* p2;
 	Alemanha* al;
-	virtual int reiniciaFase();
-	virtual int proximaFase();
-	virtual void limpar();
+	virtual int reiniciaFase()=0;
+	virtual int proximaFase()=0;
+	virtual void limpar()=0;
 
 public:
 	Fase();
 	virtual ~Fase();
 	virtual void inicializar(GerenciadorGrafico* gg) = 0 ;
-	virtual int executar(GerenciadorGrafico* gg);
-	virtual void adicionar(Entidade* e);
-	virtual void inicializarTextura(Entidade* e);
-	virtual void remover(Entidade* e);
-	virtual GerenciadorGrafico* getGerenciadorGrafico();
-	virtual void verificarInimigos();
-	virtual void adicionarInimigo(Inimigo* ini);
+	int executar(GerenciadorGrafico* gg);
+	void adicionar(Entidade* e);
+	void inicializarTextura(Entidade* e);
+	void remover(Entidade* e);
+	GerenciadorGrafico* getGerenciadorGrafico();
+	void verificarInimigos();
+	void adicionarInimigo(Inimigo* ini);
 
-	virtual void gerenciarP2(GerenciadorGrafico* gg);
+	void gerenciarP2(GerenciadorGrafico* gg);
 };

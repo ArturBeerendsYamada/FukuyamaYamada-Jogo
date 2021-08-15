@@ -22,11 +22,11 @@ public:
 	Jogador(Vetor2F pos = { 0.0f, 0.0f }, const char* caminhoTextura = nullptr, Vetor2F tam = { 0.f, 0.f }, Vetor2F vel = { 0.0f, 0.0f });
 	virtual ~Jogador();
 
-	virtual void setPular(const bool p);
-	virtual bool getPular();
+	void setPular(const bool p);
+	bool getPular();
 
-	virtual void atualizar(float deltaT) = 0;
+//	virtual void atualizar(float deltaT) = 0;
 	virtual void naColisao(Vetor2F direcao, Entidade* outro, float interX, float interY);
-	virtual void atirar();
-	virtual void setFase(Fase* fase);
+	void atirar();
+	void setFase(Fase* fase);
 };

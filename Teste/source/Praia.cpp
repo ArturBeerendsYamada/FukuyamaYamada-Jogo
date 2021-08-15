@@ -142,7 +142,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 					break;
 
 				case 8:
-					ini = (new Inimigo(Vetor2F(k * TILE, i * TILE), "Alemanha_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
+					ini = (new Italia(Vetor2F(k * TILE, i * TILE), "Italia_Countryball.png", Vetor2F(TILE, TILE), Vetor2F(0.f, 0.f)));
 					adicionarInimigo(ini);
 					break;
 
@@ -157,7 +157,7 @@ void Praia::inicializar(GerenciadorGrafico* gg)
 	gerenciador_colisoes_Fase->adicionarEntidade(static_cast<Entidade*>(j));
 	j->setFase(this);
 
-	al = new Alemanha(Vetor2F(-800.0f, 500.0f ), "Alemanha_Countryball.png", Vetor2F(6*TILE, 6*TILE), Vetor2F(100.f, 0.f));
+	al = new Alemanha(Vetor2F(-800.0f, 500.0f ), "Alemanha_Countryball.png", Vetor2F(6*TILE, 6*TILE), Vetor2F(150.f, 0.f));
     adicionarInimigo(static_cast<Inimigo*>(al));
 
     bot->setAlemanha(al);

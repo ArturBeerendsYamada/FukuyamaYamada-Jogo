@@ -10,8 +10,9 @@ Personagem::Personagem(Vetor2F pos, const char* caminhoTextura, Vetor2F tam, Vet
 Personagem::~Personagem()
 {
 }
-
+/*
 void Personagem::atualizar(float deltaT)
 {
 	posicao += velocidade * deltaT;
 }
+*/

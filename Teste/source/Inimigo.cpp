@@ -14,6 +14,8 @@ Inimigo::~Inimigo()
 {
 }
 
+
+/*
 void Inimigo::atualizar(float deltaT)
 {
 	mover(velocidade * deltaT);
@@ -63,3 +65,4 @@ void Inimigo::naColisao(Vetor2F direcao, Entidade* outro, float interX, float in
 		this->setVida(false);
 	}
 }
+*/
